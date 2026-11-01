@@ -233,6 +233,8 @@ const roastLinePacks={
  ]
 };
 let lastRoastTemplate="";
+// Track the last displayed result per game to avoid immediate repeats.
+let lastVisibleResult={};
 
 function openTool(i){
  current=i;
