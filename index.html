@@ -50,12 +50,51 @@
 @media(max-width:600px){.dialog{padding:16px}.dialogTop h2{font-size:21px}.game-question{font-size:29px}.game-option{padding:16px}.game-screen{min-height:72vh}.game-close{top:9px;right:9px}}
 @media(prefers-reduced-motion:reduce){.game-emoji,.result-big-emoji,.result-screen{animation:none!important}}
 
+
+/* Rotating couple showcase */
+.couple-showcase{height:300px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.couple-stage{height:245px;width:100%;max-width:420px;position:relative;display:grid;place-items:center;isolation:isolate}
+.couple-scene{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:translateY(14px) scale(.88);transition:opacity .65s ease,transform .75s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.couple-scene.active{opacity:1;transform:translateY(0) scale(1)}
+.scene-glow{position:absolute;width:205px;height:205px;border-radius:50%;background:radial-gradient(circle,#ff70ad38,transparent 70%);filter:blur(4px)}
+.couple-pair{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:0;font-size:clamp(72px,9vw,104px);filter:drop-shadow(0 18px 16px #09031370)}
+.couple-pair span:first-child{transform:translateX(9px) rotate(-7deg);animation:coupleLeft 2.2s ease-in-out infinite}
+.couple-pair span:last-child{transform:translateX(-9px) rotate(7deg);animation:coupleRight 2.2s ease-in-out infinite}
+@keyframes coupleLeft{50%{transform:translate(3px,-9px) rotate(-2deg)}}
+@keyframes coupleRight{50%{transform:translate(-3px,-9px) rotate(2deg)}}
+.scene-heart,.scene-spark{position:absolute;z-index:3;font-size:34px;filter:drop-shadow(0 5px 10px #0005);animation:floatSpark 2.4s ease-in-out infinite}
+.scene-heart{top:15%;right:18%}.scene-spark{bottom:14%;left:18%;animation-delay:-1.1s}
+@keyframes floatSpark{50%{transform:translateY(-13px) rotate(12deg) scale(1.12)}}
+.couple-caption{display:flex;justify-content:center;align-items:center;gap:10px;color:#f8c5dc;font-size:12px}
+.couple-caption span{font-variant-numeric:tabular-nums;border:1px solid #ffffff25;background:#ffffff12;border-radius:99px;padding:6px 10px;color:#ffd77b;font-weight:900}
+.couple-caption strong{font-size:12px;letter-spacing:.3px}
+.instant-reveal{text-align:center;min-height:55vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;position:relative;z-index:2}
+.instant-reveal .reveal-heart{font-size:clamp(76px,16vw,130px);animation:revealPulse .75s ease-in-out infinite alternate;filter:drop-shadow(0 12px 25px #ff4f9b55)}
+.instant-reveal strong{font-size:clamp(22px,4vw,34px)}
+.instant-reveal p{color:#d5c8e4;margin:0}
+@keyframes revealPulse{to{transform:scale(1.16) rotate(8deg)}}
+.tool{cursor:default}
+.tool button{transition:transform .2s,background .2s,box-shadow .2s}
+.tool button:hover{transform:translateY(-2px);background:#ff5b9d30;box-shadow:0 8px 22px #ff5b9d22}
+@media(max-width:760px){.couple-showcase{height:230px}.couple-stage{height:190px}.couple-pair{font-size:78px}}
+@media(prefers-reduced-motion:reduce){.couple-pair span,.scene-heart,.scene-spark,.instant-reveal .reveal-heart{animation:none!important}}
+
 </style>
 </head>
 <body>
 <header class="wrap nav"><a class="logo" href="/">GIGGL<i>IO</i> ✦</a><div class="navright"><span class="tag">LOVE • LAUGHS • FUN</span><select class="lang" id="lang" aria-label="Language"><option value="en">EN</option><option value="hi">हिंदी</option><option value="mr">मराठी</option></select></div></header>
 <main class="wrap">
-<section class="hero"><div class="heroGrid"><div><span class="eyebrow" id="eyebrow">✦ YOUR FUN ZONE STARTS HERE</span><h1 id="headline">Love a little.<br><span>Laugh a lot.</span></h1><p id="intro">Enter names, discover your playful love score, create a couple nickname and share the fun with your favourite people.</p><button class="primary" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})" id="explore">Explore fun tools ↓</button></div><div class="heroArt"><span class="float f1">💘</span><span class="float f2">🌹</span><span class="float f3">✨</span><span class="float f4">🦋</span><div class="heart">💗</div></div></div></section>
+<section class="hero"><div class="heroGrid"><div><span class="eyebrow" id="eyebrow">✦ YOUR FUN ZONE STARTS HERE</span><h1 id="headline">Love a little.<br><span>Laugh a lot.</span></h1><p id="intro">Enter names, discover your playful love score, create a couple nickname and share the fun with your favourite people.</p><button class="primary" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})" id="explore">Explore fun tools ↓</button></div><div class="heroArt couple-showcase" aria-label="Six animated couples">
+<div class="couple-stage" id="coupleStage">
+<div class="couple-scene active"><span class="scene-glow"></span><div class="couple-pair"><span>👩🏻</span><span>👨🏽</span></div><span class="scene-heart">💗</span><span class="scene-spark">✨</span></div>
+<div class="couple-scene"><span class="scene-glow"></span><div class="couple-pair"><span>👨🏻</span><span>👩🏽</span></div><span class="scene-heart">💞</span><span class="scene-spark">🌹</span></div>
+<div class="couple-scene"><span class="scene-glow"></span><div class="couple-pair"><span>👩🏼</span><span>👩🏾</span></div><span class="scene-heart">💖</span><span class="scene-spark">🦋</span></div>
+<div class="couple-scene"><span class="scene-glow"></span><div class="couple-pair"><span>👨🏼</span><span>👨🏾</span></div><span class="scene-heart">💜</span><span class="scene-spark">⭐</span></div>
+<div class="couple-scene"><span class="scene-glow"></span><div class="couple-pair"><span>🧑🏻</span><span>🧑🏽</span></div><span class="scene-heart">💛</span><span class="scene-spark">🌼</span></div>
+<div class="couple-scene"><span class="scene-glow"></span><div class="couple-pair"><span>👩🏿</span><span>👨🏻</span></div><span class="scene-heart">❤️</span><span class="scene-spark">💫</span></div>
+</div>
+<div class="couple-caption"><span id="coupleCounter">01 / 06</span><strong id="coupleTagline">Six couples. Six kinds of love.</strong></div>
+</div></div></section>
 <div class="ad-slot ad-wide" aria-label="Advertisement space"><strong>ADVERTISEMENT</strong><span>Banner space · 970 × 90 / responsive</span></div>
 <section id="tools"><div class="sectionHead"><div><h2 id="toolsTitle">Pick your fun ✨</h2><p id="toolsSub">Two names. One result. Unlimited laughs.</p></div></div><div class="tools" id="toolGrid"></div></section>
 <div class="ad-slot ad-inline" aria-label="Advertisement space"><strong>ADVERTISEMENT</strong><span>Responsive banner placement</span></div>
@@ -66,14 +105,32 @@
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="dialog"><div class="dialogTop"><div><span class="eyebrow" id="modalEyebrow">LET'S HAVE SOME FUN</span><h2 id="modalTitle">Love Meter</h2></div><button class="close" onclick="closeModal()" aria-label="Close">×</button></div><div id="formArea"></div></div></div><div class="toast" id="toast"></div>
 <script>
 const copy={
-en:{eyebrow:"✦ YOUR FUN ZONE STARTS HERE",intro:"Enter names, discover your playful love score, create a couple nickname and share the fun with your favourite people.",explore:"Explore fun tools ↓",toolsTitle:"Pick your fun ✨",toolsSub:"Two names. One result. Unlimited laughs.",s1t:"Enter names",s1p:"Add your name and your special person's name.",s2t:"Reveal the result",s2p:"Get a playful score, nickname or funny prediction.",s3t:"Share the fun",s3p:"Send your result to friends on WhatsApp.",footerText:"Free to play · No account · Names stay in your browser",yourName:"Your name",theirName:"Their name",name1:"First name",name2:"Second name",placeholder1:"e.g. Alex",placeholder2:"e.g. Sam",go:"Reveal my result ✨",again:"Try another",share:"Share on WhatsApp ↗",close:"Close",disclaimer:"Just for entertainment — not a scientific or real compatibility test. Names are processed in your browser and are not sent to a server.",empty:"Please enter both names.",love:"Your love score",loveLine:["A spark worth smiling about! 💖","Cute chemistry alert! 💘","The universe says: keep the good vibes going ✨","A fun little match made for laughs 🌹"],couple:"Your couple nickname",friend:"Friendship vibes",friendLine:["Bestie energy: unstoppable! 🫶","Partners in mischief! 😂","A friendship full of good chaos! 🎉","Different styles, one solid bond! 💛"],baby:"Your imaginary baby name",babyLine:"A playful name blend just for fun 👶",roast:"The name roast",roastLine:["Main character energy detected 😎","Certified overthinker with premium vibes 😂","Too iconic to be understood by everyone ✨","Professional chaos, part-time angel 😇"],crush:"Crush-o-meter",crushLine:["A tiny crush with a big smile 💗","Butterflies detected 🦋","Keep it sweet, kind and respectful 🌷","A fun little secret in your heart 💌"],title:["Love Meter","Couple Name Generator","Friendship Meter","Future Baby Name Fun","Name Roast Generator","Crush-o-meter"],desc:["Enter two names and reveal a playful love percentage.","Blend two names into a cute couple nickname.","Check your friendship vibe with a fun score.","Mix two names to invent an imaginary baby name.","Enter a name and get a friendly, funny roast.","Enter your name and your crush's name for a playful result."],action:["Check love","Create nickname","Check friendship","Mix baby names","Roast this name","Check my crush"],labels:["LOVE METER","COUPLE NAME LAB","BESTIE CHECK","BABY NAME MIXER","FRIENDLY ROAST","CRUSH ALERT"]},
-hi:{eyebrow:"✦ मस्ती की दुनिया में आपका स्वागत है",intro:"दो नाम डालें, मज़ेदार लव स्कोर देखें, कपल निकनेम बनाएँ और दोस्तों के साथ शेयर करें।",explore:"मस्ती शुरू करें ↓",toolsTitle:"अपनी मस्ती चुनें ✨",toolsSub:"दो नाम। एक मज़ेदार नतीजा।",s1t:"नाम लिखें",s1p:"अपना और अपने खास इंसान का नाम डालें।",s2t:"नतीजा देखें",s2p:"मज़ेदार स्कोर, निकनेम या काल्पनिक नाम पाएँ।",s3t:"शेयर करें",s3p:"अपना नतीजा WhatsApp पर भेजें।",footerText:"मुफ़्त · अकाउंट नहीं · नाम आपके ब्राउज़र में ही रहते हैं",yourName:"आपका नाम",theirName:"दूसरे व्यक्ति का नाम",name1:"पहला नाम",name2:"दूसरा नाम",placeholder1:"जैसे राहुल",placeholder2:"जैसे प्रिया",go:"मेरा रिज़ल्ट दिखाएँ ✨",again:"फिर से खेलें",share:"WhatsApp पर शेयर करें ↗",close:"बंद करें",disclaimer:"सिर्फ मनोरंजन के लिए — यह वैज्ञानिक या वास्तविक अनुकूलता जाँच नहीं है। नाम आपके ब्राउज़र में ही प्रोसेस होते हैं।",empty:"कृपया दोनों नाम लिखें।",love:"आपका लव स्कोर",loveLine:["मुस्कुराने वाली प्यारी सी बात! 💖","क्यूट केमिस्ट्री अलर्ट! 💘","अच्छी vibes बनाए रखें ✨","मस्ती के लिए एक प्यारी जोड़ी 🌹"],couple:"आपका कपल निकनेम",friend:"दोस्ती का अंदाज़",friendLine:["जिगरी दोस्ती! 🫶","मस्ती के पार्टनर! 😂","हँसी और धमाल वाली दोस्ती! 🎉","अलग अंदाज़, मज़बूत यारी! 💛"],baby:"आपके काल्पनिक बेबी का नाम",babyLine:"सिर्फ मस्ती के लिए बनाया गया नाम 👶",roast:"नाम का मज़ेदार Roast",roastLine:["हीरो वाली एंट्री! 😎","सोच ज़्यादा, अंदाज़ प्रीमियम 😂","हर किसी के बस की बात नहीं ✨","थोड़े शरारती, थोड़े प्यारे 😇"],crush:"क्रश मीटर",crushLine:["छोटा सा क्रश, बड़ी सी मुस्कान 💗","दिल में तितलियाँ 🦋","प्यार से और सम्मान से आगे बढ़ें 🌷","दिल का एक प्यारा सा राज़ 💌"],title:["लव मीटर","कपल निकनेम जनरेटर","दोस्ती मीटर","फ्यूचर बेबी नेम फन","नेम Roast जनरेटर","क्रश मीटर"],desc:["दो नाम डालें और मज़ेदार लव प्रतिशत देखें।","दो नाम मिलाकर प्यारा कपल निकनेम बनाएँ।","अपनी दोस्ती का मज़ेदार स्कोर देखें।","दो नाम मिलाकर काल्पनिक बेबी नाम बनाएँ।","नाम डालें और दोस्ताना Roast पाएँ।","अपना और क्रश का नाम डालकर मज़ेदार नतीजा देखें।"],action:["लव चेक करें","निकनेम बनाएँ","दोस्ती जाँचें","नाम मिलाएँ","Roast करें","क्रश चेक करें"],labels:["LOVE METER","COUPLE NAME LAB","BESTIE CHECK","BABY NAME MIXER","FRIENDLY ROAST","CRUSH ALERT"]},
-mr:{eyebrow:"✦ तुमच्या मनोरंजनाची जागा",intro:"दोन नावं टाका, मजेशीर लव्ह स्कोअर पाहा, कपल निकनेम तयार करा आणि मित्रांसोबत शेअर करा.",explore:"मजा सुरू करा ↓",toolsTitle:"तुमची मजा निवडा ✨",toolsSub:"दोन नावं. एक मजेशीर निकाल.",s1t:"नावं टाका",s1p:"तुमचं आणि तुमच्या खास व्यक्तीचं नाव लिहा.",s2t:"निकाल पाहा",s2p:"मजेशीर स्कोअर, निकनेम किंवा काल्पनिक नाव मिळवा.",s3t:"शेअर करा",s3p:"तुमचा निकाल WhatsApp वर पाठवा.",footerText:"मोफत · अकाउंट नाही · नावं तुमच्याच ब्राउझरमध्ये राहतात",yourName:"तुमचं नाव",theirName:"दुसऱ्या व्यक्तीचं नाव",name1:"पहिलं नाव",name2:"दुसरं नाव",placeholder1:"उदा. राहुल",placeholder2:"उदा. प्रिया",go:"माझा निकाल पाहा ✨",again:"पुन्हा खेळा",share:"WhatsApp वर शेअर करा ↗",close:"बंद करा",disclaimer:"फक्त मनोरंजनासाठी — ही वैज्ञानिक किंवा खरी सुसंगतता चाचणी नाही. नावांवर प्रक्रिया तुमच्याच ब्राउझरमध्ये होते.",empty:"कृपया दोन्ही नावं टाका.",love:"तुमचा लव्ह स्कोअर",loveLine:["हसवणारी गोडशी गोष्ट! 💖","क्युट केमिस्ट्री अलर्ट! 💘","चांगली ऊर्जा अशीच ठेवा ✨","मजेसाठी एक गोड जोडी 🌹"],couple:"तुमचं कपल निकनेम",friend:"मैत्रीचा अंदाज",friendLine:["जिगरी दोस्ती! 🫶","मस्तीचे पार्टनर्स! 😂","हशा आणि धमाल असलेली मैत्री! 🎉","वेगळे स्वभाव, घट्ट नातं! 💛"],baby:"काल्पनिक बाळाचं नाव",babyLine:"फक्त गंमत म्हणून तयार केलेलं नाव 👶",roast:"नावाची मजेशीर फिरकी",roastLine:["हिरोची एन्ट्री! 😎","विचार जास्त, स्टाईल भारी 😂","सगळ्यांना समजेलच असं नाही ✨","थोडे खोडकर, थोडे गोड 😇"],crush:"क्रश मीटर",crushLine:["छोटासा क्रश, मोठं हसू 💗","मनात फुलपाखरं 🦋","प्रेमाने आणि आदराने पुढे जा 🌷","मनातलं एक गोड गुपित 💌"],title:["लव्ह मीटर","कपल निकनेम जनरेटर","मैत्री मीटर","फ्युचर बेबी नेम फन","नेम Roast जनरेटर","क्रश मीटर"],desc:["दोन नावं टाका आणि मजेशीर लव्ह टक्केवारी पाहा.","दोन नावं एकत्र करून कपल निकनेम बनवा.","मैत्रीचा मजेशीर स्कोअर पाहा.","दोन नावं मिसळून काल्पनिक बाळाचं नाव बनवा.","नाव टाका आणि मजेशीर फिरकी मिळवा.","तुमचं आणि क्रशचं नाव टाकून मजेशीर निकाल पाहा."],action:["लव्ह तपासा","निकनेम बनवा","मैत्री तपासा","नावं मिसळा","फिरकी घ्या","क्रश तपासा"],labels:["LOVE METER","COUPLE NAME LAB","BESTIE CHECK","BABY NAME MIXER","FRIENDLY ROAST","CRUSH ALERT"]}
+en:{eyebrow:"✦ YOUR FUN ZONE STARTS HERE",intro:"Enter names, discover your playful love score, create a couple nickname and share the fun with your favourite people.",explore:"Explore fun tools ↓",toolsTitle:"Pick a tool. Get a result instantly ✨",toolsSub:"No long quiz rounds. Enter names, tap once and reveal the fun.",s1t:"Enter names",s1p:"Add your name and your special person's name.",s2t:"Reveal the result",s2p:"Get a playful score, nickname or funny prediction.",s3t:"Share the fun",s3p:"Send your result to friends on WhatsApp.",footerText:"Free to play · No account · Names stay in your browser",yourName:"Your name",theirName:"Their name",name1:"First name",name2:"Second name",placeholder1:"e.g. Alex",placeholder2:"e.g. Sam",go:"Reveal my result ✨",again:"Try another",share:"Share on WhatsApp ↗",close:"Close",disclaimer:"Just for entertainment — not a scientific or real compatibility test. Names are processed in your browser and are not sent to a server.",empty:"Please enter both names.",love:"Your love score",loveLine:["A spark worth smiling about! 💖","Cute chemistry alert! 💘","The universe says: keep the good vibes going ✨","A fun little match made for laughs 🌹"],couple:"Your couple nickname",coupleLine:["Two names, one legendary duo! ✨","A nickname made for matching profile pics! 💑","This duo deserves its own fan club! 🌟","Cute enough to break the internet! 💗"],friend:"Friendship vibes",friendLine:["Bestie energy: unstoppable! 🫶","Partners in mischief! 😂","A friendship full of good chaos! 🎉","Different styles, one solid bond! 💛"],baby:"Your imaginary baby name",babyLine:"A playful name blend just for fun 👶",roast:"The name roast",roastLine:["Main character energy detected 😎","Certified overthinker with premium vibes 😂","Too iconic to be understood by everyone ✨","Professional chaos, part-time angel 😇"],crush:"Crush-o-meter",crushLine:["A tiny crush with a big smile 💗","Butterflies detected 🦋","Keep it sweet, kind and respectful 🌷","A fun little secret in your heart 💌"],title:["Love Meter","Couple Name Generator","Friendship Meter","Future Baby Name Fun","Name Roast Generator","Crush-o-meter"],desc:["Enter two names and reveal a playful love percentage.","Blend two names into a cute couple nickname.","Check your friendship vibe with a fun score.","Mix two names to invent an imaginary baby name.","Enter a name and get a friendly, funny roast.","Enter your name and your crush's name for a playful result."],action:["Check love","Create nickname","Check friendship","Mix baby names","Roast this name","Check my crush"],labels:["LOVE METER","COUPLE NAME LAB","BESTIE CHECK","BABY NAME MIXER","FRIENDLY ROAST","CRUSH ALERT"]},
+hi:{eyebrow:"✦ मस्ती की दुनिया में आपका स्वागत है",intro:"दो नाम डालें, मज़ेदार लव स्कोर देखें, कपल निकनेम बनाएँ और दोस्तों के साथ शेयर करें।",explore:"मस्ती शुरू करें ↓",toolsTitle:"सीधा टूल चुनें और तुरंत रिज़ल्ट पाएँ ✨",toolsSub:"लंबा क्विज़ नहीं। नाम डालें, एक बार टैप करें और मज़ा देखें।",s1t:"नाम लिखें",s1p:"अपना और अपने खास इंसान का नाम डालें।",s2t:"नतीजा देखें",s2p:"मज़ेदार स्कोर, निकनेम या काल्पनिक नाम पाएँ।",s3t:"शेयर करें",s3p:"अपना नतीजा WhatsApp पर भेजें।",footerText:"मुफ़्त · अकाउंट नहीं · नाम आपके ब्राउज़र में ही रहते हैं",yourName:"आपका नाम",theirName:"दूसरे व्यक्ति का नाम",name1:"पहला नाम",name2:"दूसरा नाम",placeholder1:"जैसे राहुल",placeholder2:"जैसे प्रिया",go:"मेरा रिज़ल्ट दिखाएँ ✨",again:"फिर से खेलें",share:"WhatsApp पर शेयर करें ↗",close:"बंद करें",disclaimer:"सिर्फ मनोरंजन के लिए — यह वैज्ञानिक या वास्तविक अनुकूलता जाँच नहीं है। नाम आपके ब्राउज़र में ही प्रोसेस होते हैं।",empty:"कृपया दोनों नाम लिखें।",love:"आपका लव स्कोर",loveLine:["मुस्कुराने वाली प्यारी सी बात! 💖","क्यूट केमिस्ट्री अलर्ट! 💘","अच्छी vibes बनाए रखें ✨","मस्ती के लिए एक प्यारी जोड़ी 🌹"],couple:"आपका कपल निकनेम",coupleLine:["दो नाम, एक शानदार जोड़ी! ✨","मैचिंग प्रोफाइल के लिए प्यारा निकनेम! 💑","इस जोड़ी का अपना फैन क्लब होना चाहिए! 🌟","इतनी प्यारी जोड़ी कि इंटरनेट पर छा जाए! 💗"],friend:"दोस्ती का अंदाज़",friendLine:["जिगरी दोस्ती! 🫶","मस्ती के पार्टनर! 😂","हँसी और धमाल वाली दोस्ती! 🎉","अलग अंदाज़, मज़बूत यारी! 💛"],baby:"आपके काल्पनिक बेबी का नाम",babyLine:"सिर्फ मस्ती के लिए बनाया गया नाम 👶",roast:"नाम का मज़ेदार Roast",roastLine:["हीरो वाली एंट्री! 😎","सोच ज़्यादा, अंदाज़ प्रीमियम 😂","हर किसी के बस की बात नहीं ✨","थोड़े शरारती, थोड़े प्यारे 😇"],crush:"क्रश मीटर",crushLine:["छोटा सा क्रश, बड़ी सी मुस्कान 💗","दिल में तितलियाँ 🦋","प्यार से और सम्मान से आगे बढ़ें 🌷","दिल का एक प्यारा सा राज़ 💌"],title:["लव मीटर","कपल निकनेम जनरेटर","दोस्ती मीटर","फ्यूचर बेबी नेम फन","नेम Roast जनरेटर","क्रश मीटर"],desc:["दो नाम डालें और मज़ेदार लव प्रतिशत देखें।","दो नाम मिलाकर प्यारा कपल निकनेम बनाएँ।","अपनी दोस्ती का मज़ेदार स्कोर देखें।","दो नाम मिलाकर काल्पनिक बेबी नाम बनाएँ।","नाम डालें और दोस्ताना Roast पाएँ।","अपना और क्रश का नाम डालकर मज़ेदार नतीजा देखें।"],action:["लव चेक करें","निकनेम बनाएँ","दोस्ती जाँचें","नाम मिलाएँ","Roast करें","क्रश चेक करें"],labels:["LOVE METER","COUPLE NAME LAB","BESTIE CHECK","BABY NAME MIXER","FRIENDLY ROAST","CRUSH ALERT"]},
+mr:{eyebrow:"✦ तुमच्या मनोरंजनाची जागा",intro:"दोन नावं टाका, मजेशीर लव्ह स्कोअर पाहा, कपल निकनेम तयार करा आणि मित्रांसोबत शेअर करा.",explore:"मजा सुरू करा ↓",toolsTitle:"थेट टूल निवडा आणि लगेच निकाल पाहा ✨",toolsSub:"लांबलचक क्विझ नाही. नावं टाका, एकदा टॅप करा आणि मजा पाहा.",s1t:"नावं टाका",s1p:"तुमचं आणि तुमच्या खास व्यक्तीचं नाव लिहा.",s2t:"निकाल पाहा",s2p:"मजेशीर स्कोअर, निकनेम किंवा काल्पनिक नाव मिळवा.",s3t:"शेअर करा",s3p:"तुमचा निकाल WhatsApp वर पाठवा.",footerText:"मोफत · अकाउंट नाही · नावं तुमच्याच ब्राउझरमध्ये राहतात",yourName:"तुमचं नाव",theirName:"दुसऱ्या व्यक्तीचं नाव",name1:"पहिलं नाव",name2:"दुसरं नाव",placeholder1:"उदा. राहुल",placeholder2:"उदा. प्रिया",go:"माझा निकाल पाहा ✨",again:"पुन्हा खेळा",share:"WhatsApp वर शेअर करा ↗",close:"बंद करा",disclaimer:"फक्त मनोरंजनासाठी — ही वैज्ञानिक किंवा खरी सुसंगतता चाचणी नाही. नावांवर प्रक्रिया तुमच्याच ब्राउझरमध्ये होते.",empty:"कृपया दोन्ही नावं टाका.",love:"तुमचा लव्ह स्कोअर",loveLine:["हसवणारी गोडशी गोष्ट! 💖","क्युट केमिस्ट्री अलर्ट! 💘","चांगली ऊर्जा अशीच ठेवा ✨","मजेसाठी एक गोड जोडी 🌹"],couple:"तुमचं कपल निकनेम",coupleLine:["दोन नावं, एक भारी जोडी! ✨","मॅचिंग प्रोफाइलसाठी गोड निकनेम! 💑","या जोडीचा स्वतःचा फॅन क्लब हवा! 🌟","इतकी गोड जोडी की इंटरनेटवर धुमाकूळ! 💗"],friend:"मैत्रीचा अंदाज",friendLine:["जिगरी दोस्ती! 🫶","मस्तीचे पार्टनर्स! 😂","हशा आणि धमाल असलेली मैत्री! 🎉","वेगळे स्वभाव, घट्ट नातं! 💛"],baby:"काल्पनिक बाळाचं नाव",babyLine:"फक्त गंमत म्हणून तयार केलेलं नाव 👶",roast:"नावाची मजेशीर फिरकी",roastLine:["हिरोची एन्ट्री! 😎","विचार जास्त, स्टाईल भारी 😂","सगळ्यांना समजेलच असं नाही ✨","थोडे खोडकर, थोडे गोड 😇"],crush:"क्रश मीटर",crushLine:["छोटासा क्रश, मोठं हसू 💗","मनात फुलपाखरं 🦋","प्रेमाने आणि आदराने पुढे जा 🌷","मनातलं एक गोड गुपित 💌"],title:["लव्ह मीटर","कपल निकनेम जनरेटर","मैत्री मीटर","फ्युचर बेबी नेम फन","नेम Roast जनरेटर","क्रश मीटर"],desc:["दोन नावं टाका आणि मजेशीर लव्ह टक्केवारी पाहा.","दोन नावं एकत्र करून कपल निकनेम बनवा.","मैत्रीचा मजेशीर स्कोअर पाहा.","दोन नावं मिसळून काल्पनिक बाळाचं नाव बनवा.","नाव टाका आणि मजेशीर फिरकी मिळवा.","तुमचं आणि क्रशचं नाव टाकून मजेशीर निकाल पाहा."],action:["लव्ह तपासा","निकनेम बनवा","मैत्री तपासा","नावं मिसळा","फिरकी घ्या","क्रश तपासा"],labels:["LOVE METER","COUPLE NAME LAB","BESTIE CHECK","BABY NAME MIXER","FRIENDLY ROAST","CRUSH ALERT"]}
 };
 const icons=["💘","💑","🫶","👶","😂","🦋"];
 let lang="en",current=0,shareText="";
 const $=id=>document.getElementById(id),t=()=>copy[lang];
-function render(){let x=t();["eyebrow","intro","explore","toolsTitle","toolsSub","s1t","s1p","s2t","s2p","s3t","s3p","footerText"].forEach(k=>$(k).textContent=x[k]);$("toolGrid").innerHTML=x.title.map((name,i)=>'<article class="tool"><div class="toolIcon">'+icons[i]+'</div><h3>'+name+'</h3><p>'+x.desc[i]+'</p><button onclick="openTool('+i+')">'+x.action[i]+' →</button></article>').join("");document.documentElement.lang=lang}
+
+const coupleCaptions={
+ en:["Six couples. Six kinds of love.","Different stories. Same butterflies.","Love has no single look.","Two hearts, their own universe.","Cute chaos, perfect together.","Every pair has a story."],
+ hi:["छह जोड़ियाँ, प्यार के छह अंदाज़।","अलग कहानियाँ, वही तितलियाँ।","प्यार का कोई एक रूप नहीं।","दो दिल, अपनी अलग दुनिया।","प्यारी मस्ती, साथ में परफेक्ट।","हर जोड़ी की अपनी कहानी।"],
+ mr:["सहा जोड्या, प्रेमाचे सहा रंग.","वेगळ्या गोष्टी, तीच फुलपाखरं.","प्रेमाचा एकच चेहरा नसतो.","दोन मनं, त्यांचं स्वतःचं जग.","गोड धमाल, एकत्र परफेक्ट.","प्रत्येक जोडीची वेगळी गोष्ट."]
+};
+let activeCouple=0;
+function rotateCouple(){
+ const scenes=[...document.querySelectorAll(".couple-scene")];
+ if(!scenes.length)return;
+ scenes[activeCouple].classList.remove("active");
+ activeCouple=(activeCouple+1)%scenes.length;
+ scenes[activeCouple].classList.add("active");
+ $("coupleCounter").textContent=String(activeCouple+1).padStart(2,"0")+" / 06";
+ $("coupleTagline").textContent=coupleCaptions[lang][activeCouple];
+}
+setInterval(rotateCouple,2600);
+
+function render(){let x=t();["eyebrow","intro","explore","toolsTitle","toolsSub","s1t","s1p","s2t","s2p","s3t","s3p","footerText"].forEach(k=>$(k).textContent=x[k]);$("toolGrid").innerHTML=x.title.map((name,i)=>'<article class="tool"><div class="toolIcon">'+icons[i]+'</div><h3>'+name+'</h3><p>'+x.desc[i]+'</p><button onclick="openTool('+i+')">'+x.action[i]+' →</button></article>').join("");document.documentElement.lang=lang;if($("coupleTagline"))$("coupleTagline").textContent=coupleCaptions[lang][activeCouple]}
 const quizSets=[
 [{q:"What makes your heart smile the most?",a:["A sweet message 💌","A surprise hug 🤗","Laughing together 😂","A little adventure ✨"]},{q:"Your perfect date vibe?",a:["Candlelight & roses 🌹","Street food & long talks 🍟","Movie night & cuddles 🎬","Spontaneous road trip 🚗"]},{q:"What matters most in a bond?",a:["Trust and loyalty 💖","Fun and laughter 😄","Understanding 🤝","Little everyday efforts 🌷"]},{q:"Pick your love-song mood",a:["Soft romantic 🎶","Cute and playful 💞","Deep and emotional 🥹","Dance and madness 💃"]}],
 [{q:"Your best friend calls at 2 AM. You…",a:["Answer instantly 📞","Ask what trouble now 😂","Bring snacks and show up 🍕","Send 17 voice notes 🎙️"]},{q:"Your friendship superpower?",a:["Keeping every secret 🔐","Making them laugh 🤣","Giving honest advice 💬","Being there, always 🫶"]},{q:"Your ideal bestie plan?",a:["A long chai session ☕","A crazy trip 🚌","Gaming all night 🎮","Doing absolutely nothing 😎"]},{q:"Choose your friendship symbol",a:["A rose 🌹","A goofy meme 🤪","A matching bracelet 💫","A lifetime promise 💛"]}],
@@ -84,7 +141,7 @@ const quizSets=[
 ];
 const themeClass=["theme-love","theme-couple","theme-friend","theme-baby","theme-roast","theme-crush"];
 const themeEmojis=[["❤️","💋","🌹","💘","💕","💞"],["💑","💗","✨","💐","💓"],["🌹","🫶","🌷","💛","🌼","🤝"],["🧸","🌈","⭐","🍼","🦋"],["😂","🤣","🔥","🤡","💥"],["🦋","💌","💗","🌸","💘"]];
-let quizStep=0,quizAnswers=[],sessionSeed=0;
+let sessionSeed=0;const lastVisibleResult={};
 function openTool(i){
  current=i;quizStep=0;quizAnswers=[];
  $("modalTitle").textContent=t().title[i];
@@ -104,18 +161,13 @@ function emojiRain(){
 function startQuiz(){
  const a=$("nameA").value.trim(),b=$("nameB")?.value.trim()||"";
  if(!a||(current!==4&&!b)){toast(t().empty);return}
- window.gameNames={a,b};quizStep=0;quizAnswers=[];sessionSeed=(crypto.getRandomValues(new Uint32Array(1))[0]^Date.now())>>>0;
- showQuestion();
-}
-function showQuestion(){
- const qs=quizSets[current];const q=qs[quizStep];const pct=Math.round((quizStep/qs.length)*100);
- $("modalTitle").textContent=t().title[current]+" · "+(quizStep+1)+"/"+qs.length;
- $("formArea").innerHTML='<div class="game-screen"><div class="game-kicker">'+t().labels[current]+' · QUESTION '+(quizStep+1)+'</div><div class="game-progress"><span style="width:'+pct+'%"></span></div><h2 class="game-question">'+q.q+'</h2><div class="game-options">'+q.a.map((v,i)=>'<button class="game-option" onclick="answerQuestion('+i+')">'+v+'</button>').join("")+'</div><p class="quiz-start-note">✨ '+(lang==="mr"?"एक पर्याय निवडा आणि पुढे जा":lang==="hi"?"एक विकल्प चुनें और आगे बढ़ें":"Choose one answer to continue")+'</p></div>';
-}
-function answerQuestion(n){
- quizAnswers.push(n);quizStep++;
- if(quizStep<quizSets[current].length){showQuestion();return}
- makeResult();
+ window.gameNames={a,b};
+ sessionSeed=crypto.getRandomValues(new Uint32Array(1))[0]>>>0;
+ const line=lang==="mr"?"तुमच्यासाठी एक खास निकाल तयार होतोय…":lang==="hi"?"आपका खास रिज़ल्ट तैयार हो रहा है…":"Creating your one-of-a-kind result…";
+ $("modalTitle").textContent=lang==="mr"?"मॅजिक सुरू!":lang==="hi"?"मैजिक शुरू!":"Here comes the magic!";
+ $("formArea").innerHTML='<div class="instant-reveal"><div class="reveal-heart">'+(themeEmojis[current][0])+'</div><strong>'+line+'</strong><p>✨ '+(lang==="mr"?"थोडीशी मजा, लगेच निकाल":lang==="hi"?"थोड़ी मस्ती, तुरंत नतीजा":"A little sparkle. An instant result.")+'</p></div>';
+ emojiRain();
+ setTimeout(makeResult,850);
 }
 function closeModal(){$("modal").classList.remove("show");document.body.style.overflow=""}
 function hash(s){let h=2166136261;for(let c of s.toLowerCase().replace(/\s/g,"")){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
@@ -131,7 +183,20 @@ function makeResult(){
  4:["Your roast score is hotter than your phone! 🔥","A walking plot twist with premium drama! 🎭","Certified legend. Handle with snacks! 🍟","Your vibe has its own warning label! 😂","Too iconic for ordinary settings! 😎"],
  5:["Butterflies have entered the chat! 🦋","A cute little crush with big-screen energy! 💌","Your heart just sent a notification! 💗","A sweet secret with a rom-com soundtrack! 🌸"]
  };
- const score=48+(roll%53),line=lines[current][(roll>>>8)%lines[current].length];
+ const score=48+(roll%53);
+ const localizedLines=[t().loveLine,t().coupleLine,t().friendLine,t().babyLine?[t().babyLine]:null,t().roastLine,t().crushLine];
+ const linePool=localizedLines[current]||lines[current];
+ let line=linePool[(roll>>>8)%linePool.length];
+ let signature="";
+ let attempts=0;
+ while(attempts<8){
+  const candidateScore=48+((roll+attempts*7919)%53);
+  const candidateLine=linePool[((roll>>>8)+attempts)%linePool.length];
+  signature=current+"|"+candidateScore+"|"+candidateLine;
+  if(lastVisibleResult[current]!==signature){line=candidateLine;break}
+  attempts++;
+ }
+ lastVisibleResult[current]=signature;
  let title="",extra="",detail=line,icon=themeEmojis[current][(roll>>>16)%themeEmojis[current].length];
  if(current===0){title=t().love;extra=score+"%"}
  if(current===1){title=t().couple;extra=blend(a,b)}
