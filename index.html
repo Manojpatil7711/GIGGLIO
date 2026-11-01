@@ -259,7 +259,7 @@ function startQuiz(){
 }
 function closeModal(){$("modal").classList.remove("show");document.body.style.overflow=""}
 function hash(s){let h=2166136261;for(let c of s.toLowerCase().replace(/\s/g,"")){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
-function cleanBlend(s){return s.replace(/[^\\p{L}\\p{N}]/gu,"").replace(/(.)\\1{2,}/gu,"$1$1").slice(0,24).replace(/^./u,c=>c.toLocaleUpperCase())}
+function cleanBlend(s){return s.replace(/[^\p{L}\p{N}]/gu,"").replace(/(\p{L})\1{2,}/gu,"$1$1").slice(0,24).replace(/^./u,c=>c.toLocaleUpperCase())}
 function blend(a,b){a=a.trim();b=b.trim();let cut1=Math.max(1,Math.ceil(a.length/2)),cut2=Math.floor(b.length/2);return cleanBlend(a.slice(0,cut1)+b.slice(cut2))}
 function coupleNameOptions(a,b,seed){const v=[()=>blend(a,b),()=>blend(b,a),()=>cleanBlend(a.slice(0,Math.max(1,Math.ceil(a.length*.65)))+b.slice(Math.floor(b.length*.35))),()=>cleanBlend(b.slice(0,Math.max(1,Math.ceil(b.length*.65)))+a.slice(Math.floor(a.length*.35))),()=>cleanBlend(a.slice(0,Math.max(1,Math.floor(a.length/2)))+b.slice(0,Math.max(1,Math.ceil(b.length/2)))),()=>cleanBlend(b.slice(0,Math.max(1,Math.floor(b.length/2)))+a.slice(0,Math.max(1,Math.ceil(a.length/2)))),()=>cleanBlend(a.slice(0,Math.max(1,Math.ceil(a.length*.4)))+b.slice(Math.max(0,Math.floor(b.length*.25)))),()=>cleanBlend(b.slice(0,Math.max(1,Math.ceil(b.length*.4)))+a.slice(Math.max(0,Math.floor(a.length*.25))))];const offset=seed%v.length,out=[];for(let i=0;i<v.length&&out.length<6;i++){const x=v[(i+offset)%v.length]();if(x&&x.toLowerCase()!==a.toLowerCase()&&x.toLowerCase()!==b.toLowerCase()&&!out.some(y=>y.toLowerCase()===x.toLowerCase()))out.push(x)}if(out.length<6)[a+b,b+a,a.slice(0,2)+b,b.slice(0,2)+a].forEach(x=>{const z=cleanBlend(x);if(z&&!out.some(y=>y.toLowerCase()===z.toLowerCase()))out.push(z)});return out.slice(0,6)}
 function swapCoupleNames(){const a=$("nameA"),b=$("nameB");if(!a||!b)return;const x=a.value;a.value=b.value;b.value=x;a.focus()}
@@ -294,7 +294,7 @@ function makeResult(){
  lastVisibleResult[current]=signature;
  let title="",extra="",detail=line,icon=themeEmojis[current][(roll>>>16)%themeEmojis[current].length];
  if(current===0){title=t().love;extra=score+"%"}
- if(current===1){title=t().couple;extra=blend(a,b)}
+ if(current===1){title=t().couple;extra=coupleNameOptions(a,b,roll)}
  if(current===2){title=t().friend;extra=(52+((roll>>>4)%49))+"%"}
  if(current===3){title=t().baby;extra=blend(a,b)}
  if(current===4){title=t().roast;extra=a}
