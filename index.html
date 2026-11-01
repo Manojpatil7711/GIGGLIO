@@ -35,7 +35,7 @@
 .game-emoji-rain{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
 .game-emoji{position:absolute;bottom:-50px;left:var(--x);font-size:var(--size);opacity:0;animation:emojiRise var(--duration) linear infinite;animation-delay:var(--delay);filter:drop-shadow(0 5px 8px #0005)}
 @keyframes emojiRise{0%{transform:translateY(0) rotate(0deg) scale(.65);opacity:0}12%{opacity:.85}85%{opacity:.75}100%{transform:translateY(-110vh) rotate(35deg) scale(1.15);opacity:0}}
-.result-screen{text-align:center;position:relative;z-index:2;animation:resultPop .55s cubic-bezier(.2,.9,.2,1) both}
+.couple-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:720px;margin:22px auto}.couple-option{display:flex;align-items:center;gap:10px;text-align:left;padding:15px 16px;border:1px solid #ffffff28;border-radius:15px;background:linear-gradient(135deg,#ffffff15,#ffffff08);min-width:0}.couple-option strong{font-size:clamp(18px,3.5vw,26px);overflow-wrap:anywhere}.couple-option-number{font-size:11px;font-weight:900;color:#ffc0dc;opacity:.8}.swap-names{display:block;margin:-12px auto 18px;border:1px solid #ffffff35;background:#ffffff12;color:#f5d9ff;padding:10px 16px;border-radius:99px;font-size:12px;font-weight:900}.result-screen{text-align:center;position:relative;z-index:2;animation:resultPop .55s cubic-bezier(.2,.9,.2,1) both}
 @keyframes resultPop{from{opacity:0;transform:translateY(22px) scale(.94)}to{opacity:1;transform:none}}
 .result-big-emoji{font-size:clamp(64px,14vw,112px);filter:drop-shadow(0 12px 25px #0005);animation:heartBeat 1.3s ease-in-out infinite}
 @keyframes heartBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.13)}30%{transform:scale(1)}45%{transform:scale(1.08)}}
@@ -112,7 +112,7 @@
 @keyframes emojiResultPulse{50%{transform:scale(1.09) rotate(3deg)}}
 .result-screen:not(.roast-result) .result-name-display{font-family:Impact,"Arial Black",system-ui,sans-serif;font-size:clamp(36px,8vw,76px);font-weight:1000;text-transform:uppercase;line-height:1.02;color:#fff;text-shadow:4px 5px 0 #65305c;overflow-wrap:anywhere}
 .result-screen:not(.roast-result) .result-detail{font-family:Impact,"Arial Black",system-ui,sans-serif;font-size:clamp(26px,5vw,46px)!important;text-transform:uppercase;line-height:1.08}
-@media(max-width:520px){.hero{padding:34px 6%}.heroGrid{gap:8px}.emoji-showcase{height:220px}.fields{gap:8px}.fields .field input{padding:15px 6px;font-size:16px}.fields .field label{font-size:10px}.result-screen:not(.roast-result) .result-big-emoji{font-size:clamp(112px,32vw,160px)}.result-screen:not(.roast-result) .result-score{font-size:clamp(84px,24vw,118px)}.tool-ad-mini{height:30px}}
+@media(max-width:520px){.couple-options{gap:8px}.couple-option{padding:12px 9px;gap:6px}.couple-option strong{font-size:17px}.hero{padding:34px 6%}.heroGrid{gap:8px}.emoji-showcase{height:220px}.fields{gap:8px}.fields .field input{padding:15px 6px;font-size:16px}.fields .field label{font-size:10px}.result-screen:not(.roast-result) .result-big-emoji{font-size:clamp(112px,32vw,160px)}.result-screen:not(.roast-result) .result-score{font-size:clamp(84px,24vw,118px)}.tool-ad-mini{height:30px}}
 @media(prefers-reduced-motion:reduce){.emoji-burst,.emoji-orbit,.result-screen:not(.roast-result) .result-big-emoji{animation:none!important}}
 
 .tool-ad-slot{width:min(320px,100%);min-height:50px;margin:24px auto 4px;padding:8px 12px;border:1px dashed #ffffff30;border-radius:10px;background:#ffffff06;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#a99bb8;text-align:center;font-size:9px;letter-spacing:1.2px}.tool-ad-slot b{font-size:10px;letter-spacing:.3px;font-weight:600;color:#c6b8d3}@media(max-width:600px){.tool-ad-slot{margin:18px auto 2px;min-height:50px}}
@@ -243,7 +243,7 @@ function openTool(i){
  if(current===4){
   $("formArea").innerHTML='<div class="roast-entry"><div class="roast-entry-emoji">🤡</div><h3>WHO IS GETTING ROASTED?</h3><p>Drop a name. We bring the friendly fire 🔥</p><input id="nameA" maxlength="32" autocomplete="off" aria-label="Type a name" placeholder="Type a name..."><button class="go" onclick="startQuiz()">ROAST THIS NAME 🔥</button><p class="quiz-start-note">'+t().disclaimer+'</p></div>';
  }else{
-  $("formArea").innerHTML='<div class="fields">'+(two?'<div class="field"><label for="nameA">'+t().name1+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div><div class="field"><label for="nameB">'+t().name2+'</label><input id="nameB" maxlength="32" autocomplete="off" placeholder="'+t().placeholder2+'"></div>':'<div class="field"><label for="nameA">'+t().yourName+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div>')+'</div><button class="go" onclick="startQuiz()">'+t().go+'</button><p class="quiz-start-note">'+t().disclaimer+'</p>';
+  $("formArea").innerHTML='<div class="fields">'+(two?'<div class="field"><label for="nameA">'+t().name1+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div><div class="field"><label for="nameB">'+t().name2+'</label><input id="nameB" maxlength="32" autocomplete="off" placeholder="'+t().placeholder2+'"></div>':'<div class="field"><label for="nameA">'+t().yourName+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div>')+'</div>'+(current===1?'<button class="swap-names" type="button" onclick="swapCoupleNames()">⇄ '+(lang==="mr"?"नावांचा क्रम बदला":lang==="hi"?"नामों का क्रम बदलें":"SWAP NAME ORDER")+'</button>':'')+'<button class="go" onclick="startQuiz()">'+t().go+'</button><p class="quiz-start-note">'+t().disclaimer+'</p>';
  }
  $("nameA").focus();
 }
@@ -259,7 +259,11 @@ function startQuiz(){
 }
 function closeModal(){$("modal").classList.remove("show");document.body.style.overflow=""}
 function hash(s){let h=2166136261;for(let c of s.toLowerCase().replace(/\s/g,"")){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
-function blend(a,b){a=a.trim();b=b.trim();let cut1=Math.max(1,Math.ceil(a.length/2)),cut2=Math.floor(b.length/2);let s=a.slice(0,cut1)+b.slice(cut2);return s.charAt(0).toUpperCase()+s.slice(1)}
+function cleanBlend(s){return s.replace(/[^\\p{L}\\p{N}]/gu,"").replace(/(.)\\1{2,}/gu,"$1$1").slice(0,24).replace(/^./u,c=>c.toLocaleUpperCase())}
+function blend(a,b){a=a.trim();b=b.trim();let cut1=Math.max(1,Math.ceil(a.length/2)),cut2=Math.floor(b.length/2);return cleanBlend(a.slice(0,cut1)+b.slice(cut2))}
+function coupleNameOptions(a,b,seed){const v=[()=>blend(a,b),()=>blend(b,a),()=>cleanBlend(a.slice(0,Math.max(1,Math.ceil(a.length*.65)))+b.slice(Math.floor(b.length*.35))),()=>cleanBlend(b.slice(0,Math.max(1,Math.ceil(b.length*.65)))+a.slice(Math.floor(a.length*.35))),()=>cleanBlend(a.slice(0,Math.max(1,Math.floor(a.length/2)))+b.slice(0,Math.max(1,Math.ceil(b.length/2)))),()=>cleanBlend(b.slice(0,Math.max(1,Math.floor(b.length/2)))+a.slice(0,Math.max(1,Math.ceil(a.length/2)))),()=>cleanBlend(a.slice(0,Math.max(1,Math.ceil(a.length*.4)))+b.slice(Math.max(0,Math.floor(b.length*.25)))),()=>cleanBlend(b.slice(0,Math.max(1,Math.ceil(b.length*.4)))+a.slice(Math.max(0,Math.floor(a.length*.25))))];const offset=seed%v.length,out=[];for(let i=0;i<v.length&&out.length<6;i++){const x=v[(i+offset)%v.length]();if(x&&x.toLowerCase()!==a.toLowerCase()&&x.toLowerCase()!==b.toLowerCase()&&!out.some(y=>y.toLowerCase()===x.toLowerCase()))out.push(x)}if(out.length<6)[a+b,b+a,a.slice(0,2)+b,b.slice(0,2)+a].forEach(x=>{const z=cleanBlend(x);if(z&&!out.some(y=>y.toLowerCase()===z.toLowerCase()))out.push(z)});return out.slice(0,6)}
+function swapCoupleNames(){const a=$("nameA"),b=$("nameB");if(!a||!b)return;const x=a.value;a.value=b.value;b.value=x;a.focus()}
+function regenerateCouple(){sessionSeed=crypto.getRandomValues(new Uint32Array(1))[0]>>>0;makeResult()}
 function makeResult(){
  const {a,b}=window.gameNames;const rand=()=>crypto.getRandomValues(new Uint32Array(1))[0];
  const roll=(rand()^sessionSeed^Date.now())>>>0;
@@ -295,13 +299,13 @@ function makeResult(){
  if(current===3){title=t().baby;extra=blend(a,b)}
  if(current===4){title=t().roast;extra=a}
  if(current===5){title=t().crush;extra=score+"%"}
- const scoreView=[0,2,5].includes(current)?'<div class="result-score">'+extra+'</div>':'<h2>'+extra+'</h2>';
+ const scoreView=current===1?'<div class="couple-options">'+extra.map((name,i)=>'<div class="couple-option"><span class="couple-option-number">0'+(i+1)+'</span><strong>'+escapeHTML(name)+'</strong></div>').join('')+'</div>':[0,2,5].includes(current)?'<div class="result-score">'+extra+'</div>':'<h2>'+escapeHTML(extra)+'</h2>';
  const names=a+(b?" + "+b:"");
  shareText="GIGGLIO ✦ "+t().title[current]+"\n"+names+"\n"+title+": "+extra+"\n"+detail+"\n"+location.origin;
  $("modalTitle").textContent=t().title[current]+" · RESULT";
  if(current===4){
   const safeName=escapeHTML(a);
-  $("formArea").innerHTML='<div class="result-screen roast-result"><div class="result-big-emoji">🤡</div><div class="roast-stamp">🔥 SAVAGE ROAST MODE 🔥</div><h2 class="roast-headline">'+safeName+' GOT ROASTED!</h2><div class="roast-copy">'+escapeHTML(detail)+'</div><div class="roast-name">'+safeName+'</div><p class="disclaimer">'+t().disclaimer+'</p><div class="resultActions"><button class="share" onclick="shareResult()">'+t().share+'</button><button class="again" onclick="openTool('+current+')">'+t().again+'</button></div></div>';
+  $("formArea").innerHTML='<div class="result-screen roast-result"><div class="result-big-emoji">🤡</div><div class="roast-stamp">🔥 SAVAGE ROAST MODE 🔥</div><h2 class="roast-headline">'+safeName+' GOT ROASTED!</h2><div class="roast-copy">'+escapeHTML(detail)+'</div><div class="roast-name">'+safeName+'</div><p class="disclaimer">'+t().disclaimer+'</p><div class="resultActions"><button class="share" onclick="shareResult()">'+t().share+'</button><button class="again" onclick="'+(current===1?'regenerateCouple()':'openTool('+current+')')+'">'+(current===1?(lang==="mr"?"नवीन कॉम्बिनेशन्स":lang==="hi"?"नए कॉम्बिनेशन":"Generate more combinations"):t().again)+'</button></div></div>';
  }else{
   $("formArea").innerHTML='<div class="result-screen"><div class="result-big-emoji">'+icon+'</div><span class="resultChip">'+t().labels[current]+'</span><h2>'+escapeHTML(title)+'</h2>'+scoreView+'<p class="result-detail">'+escapeHTML(detail)+'</p><div class="result-name-display">'+escapeHTML(names)+'</div><p class="disclaimer">'+t().disclaimer+'</p><div class="resultActions"><button class="share" onclick="shareResult()">'+t().share+'</button><button class="again" onclick="openTool('+current+')">'+t().again+'</button></div></div>';
  }
