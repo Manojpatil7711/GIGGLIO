@@ -158,7 +158,82 @@ const quizSets=[
 ];
 const themeClass=["theme-love","theme-couple","theme-friend","theme-baby","theme-roast","theme-crush"];
 const themeEmojis=[["❤️","💋","🌹","💘","💕","💞"],["💑","💗","✨","💐","💓"],["🌹","🫶","🌷","💛","🌼","🤝"],["🧸","🌈","⭐","🍼","🦋"],["😂","🤣","🔥","🤡","💥"],["🦋","💌","💗","🌸","💘"]];
-let sessionSeed=0;const lastVisibleResult={};
+const roastLinePacks={
+ en:[
+  "{name}, your confidence has a better Wi-Fi signal than your common sense. 📶",
+  "{name}, you bring everyone together… mostly to ask what just happened. 🤡",
+  "{name}, your life runs on 2% battery and 98% excuses. 🔋",
+  "{name}, even your alarm clock has stopped believing in you. ⏰",
+  "{name}, your plans have more plot holes than a low-budget movie. 🎬",
+  "{name}, you are the human version of a software update at 2 AM. 💻",
+  "{name}, your bank balance and your attitude are in different tax brackets. 💸",
+  "{name}, you call it multitasking; everyone else calls it unfinished business. 🫠",
+  "{name}, your dating strategy needs a customer-support department. 💌",
+  "{name}, you have main-character confidence with background-extra decisions. 🎭",
+  "{name}, even your shadow needs personal space. 😭",
+  "{name}, your productivity is currently on a long vacation. 🏖️",
+  "{name}, you could get lost in a one-page instruction manual. 🗺️",
+  "{name}, your phone has more social plans than you do. 📱",
+  "{name}, you don't miss deadlines; you give them dramatic entrances. ⌛",
+  "{name}, your opinions load faster than your facts. 🧠",
+  "{name}, you have premium taste and free-trial budgeting. 🛍️",
+  "{name}, your room isn't messy; it's an archaeological discovery. 🧹",
+  "{name}, you turn simple decisions into a six-season series. 📺",
+  "{name}, your GPS says 'recalculating' when you make life choices. 🚗",
+  "{name}, your confidence is sponsored by absolutely no evidence. 🏆",
+  "{name}, you are proof that 'I'll do it tomorrow' can become a lifestyle. 😴",
+  "{name}, even autocorrect has stopped trying to fix your decisions. ✍️",
+  "{name}, your cooking has the smoke alarm writing reviews. 🍳",
+  "{name}, you bring chaos to a room that was already empty. 💥",
+  "{name}, your fashion sense is buffering in another dimension. 👟",
+  "{name}, your attention span left the chat three notifications ago. 👀",
+  "{name}, you have the urgency of a Monday morning loading screen. 🐢",
+  "{name}, your excuses deserve an award; your results are still pending. 🏅",
+  "{name}, you are not late — you are on your own confusing time zone. 🌍"
+ ],
+ hi:[
+  "{name}, तुम्हारा कॉन्फिडेंस 5G है और लॉजिक अभी भी 2G पर है। 📶",
+  "{name}, तुम्हारी प्लानिंग देखकर कैलेंडर भी छुट्टी माँगता है। 📅",
+  "{name}, बहाने इतने शानदार हैं, बस काम का सीज़न रिलीज़ नहीं हुआ। 😭",
+  "{name}, तुम्हारी लाइफ का रिमोट किसके पास है? कोई तो ढूँढो। 📺",
+  "{name}, तुम्हारा बैंक बैलेंस और एटीट्यूड अलग-अलग दुनिया में रहते हैं। 💸",
+  "{name}, तुम काम शुरू करने से पहले ही ब्रेक ले लेते हो। ☕",
+  "{name}, तुम्हारी टाइमिंग देखकर घड़ी ने इस्तीफा दे दिया। ⏰",
+  "{name}, तुम्हारा फोन तुमसे ज़्यादा लोगों से मिलता है। 📱",
+  "{name}, तुम हर आसान बात को वेब सीरीज़ बना देते हो। 🎬",
+  "{name}, तुम्हारा फोकस तो नोटिफिकेशन से भी जल्दी भागता है। 👀",
+  "{name}, तुम्हारे फैसलों को देखकर GPS भी घूम जाता है। 🗺️",
+  "{name}, स्टाइल प्रीमियम है, बजट अभी ट्रायल पर है। 🛍️",
+  "{name}, तुम्हारी नींद के सामने अलार्म भी हार मान चुका है। 😴",
+  "{name}, तुम्हारे आइडिया रॉकेट हैं, एक्शन अभी पार्किंग में है। 🚀",
+  "{name}, तुम्हारी बहस में फैक्ट्स गेस्ट अपीयरेंस देते हैं। 🧠",
+  "{name}, तुम लेट नहीं होते, बस समय को कन्फ्यूज़ करते हो। ⌛",
+  "{name}, तुम्हारी कुकिंग देखकर फायर अलार्म भी रिव्यू लिखेगा। 🍳",
+  "{name}, तुम्हारी टू-डू लिस्ट अब ऐतिहासिक दस्तावेज़ बन गई है। 📜"
+ ],
+ mr:[
+  "{name}, तुझा कॉन्फिडन्स 5G आहे आणि लॉजिक अजून 2G वर आहे. 📶",
+  "{name}, तुझ्या प्लॅनिंगला पाहून कॅलेंडरनेच सुट्टी घेतली. 📅",
+  "{name}, बहाणे भारी आहेत; फक्त कामाचा एपिसोड अजून रिलीज नाही. 😭",
+  "{name}, तुझ्या आयुष्याचा रिमोट कुठे हरवलाय रे? 📺",
+  "{name}, तुझं बँक बॅलन्स आणि अॅटिट्यूड वेगवेगळ्या ग्रहांवर आहेत. 💸",
+  "{name}, काम सुरू करण्याआधीच तुझा ब्रेक सुरू होतो. ☕",
+  "{name}, तुझी टाइमिंग पाहून घड्याळाने राजीनामा दिला. ⏰",
+  "{name}, तुझा फोन तुझ्यापेक्षा जास्त लोकांना भेटतो. 📱",
+  "{name}, तू साध्या गोष्टीची पण वेब सिरीज बनवतोस. 🎬",
+  "{name}, तुझं फोकस नोटिफिकेशनपेक्षाही लवकर पळतं. 👀",
+  "{name}, तुझे निर्णय पाहून GPS पण गोंधळतो. 🗺️",
+  "{name}, स्टाईल प्रीमियम, पण बजेट अजून ट्रायलवर आहे. 🛍️",
+  "{name}, तुझ्या झोपेपुढे अलार्मनेही हार मानली. 😴",
+  "{name}, आयडिया रॉकेटसारख्या; अॅक्शन अजून पार्किंगमध्ये. 🚀",
+  "{name}, तुझ्या चर्चेत मुद्दे फक्त पाहुणे म्हणून येतात. 🧠",
+  "{name}, तू उशिरा येत नाहीस, वेळेलाच गोंधळवतोस. ⌛",
+  "{name}, तुझं कुकिंग पाहून फायर अलार्म रिव्ह्यू लिहील. 🍳",
+  "{name}, तुझी To-do list आता ऐतिहासिक दस्तऐवज झालीये. 📜"
+ ]
+};
+let lastRoastTemplate="";
+
 function openTool(i){
  current=i;
  $("modalTitle").textContent=t().title[i];
@@ -198,15 +273,18 @@ function makeResult(){
  };
  let score=48+(roll%53);
  const localizedLines=[t().loveLine,t().coupleLine,t().friendLine,t().babyLine?[t().babyLine]:null,t().roastLine,t().crushLine];
- const linePool=localizedLines[current]||lines[current];
- let line=linePool[(roll>>>8)%linePool.length];
+ const linePool=current===4?roastLinePacks[lang]:localizedLines[current]||lines[current];
+ let lineIndex=(roll>>>8)%linePool.length;
+ if(current===4&&linePool.length>1&&linePool[lineIndex]===lastRoastTemplate)lineIndex=(lineIndex+1+(roll% (linePool.length-1)))%linePool.length;
+ let line=linePool[lineIndex];
+ if(current===4){lastRoastTemplate=line;line=line.replaceAll("{name}",a);}
  let signature="";
  let attempts=0;
  while(attempts<8){
   const candidateScore=48+((roll+attempts*7919)%53);
-  const candidateLine=linePool[((roll>>>8)+attempts)%linePool.length];
+  const candidateLine=linePool[(lineIndex+attempts)%linePool.length];
   signature=current+"|"+candidateScore+"|"+candidateLine;
-  if(lastVisibleResult[current]!==signature){line=candidateLine;score=candidateScore;break}
+  if(lastVisibleResult[current]!==signature){line=current===4?candidateLine.replaceAll("{name}",a):candidateLine;score=candidateScore;break}
   attempts++;
  }
  lastVisibleResult[current]=signature;
@@ -223,7 +301,7 @@ function makeResult(){
  $("modalTitle").textContent=t().title[current]+" · RESULT";
  if(current===4){
   const safeName=escapeHTML(a);
-  $("formArea").innerHTML='<div class="result-screen roast-result"><div class="result-big-emoji">🤡</div><div class="roast-stamp">💀 FRIENDLY ROAST 💀</div><h2 class="roast-headline">'+safeName+' GOT ROASTED!</h2><div class="roast-copy">'+escapeHTML(detail)+'</div><div class="roast-name">'+safeName+'</div><p class="disclaimer">'+t().disclaimer+'</p><div class="resultActions"><button class="share" onclick="shareResult()">'+t().share+'</button><button class="again" onclick="openTool('+current+')">'+t().again+'</button></div></div>';
+  $("formArea").innerHTML='<div class="result-screen roast-result"><div class="result-big-emoji">🤡</div><div class="roast-stamp">🔥 SAVAGE ROAST MODE 🔥</div><h2 class="roast-headline">'+safeName+' GOT ROASTED!</h2><div class="roast-copy">'+escapeHTML(detail)+'</div><div class="roast-name">'+safeName+'</div><p class="disclaimer">'+t().disclaimer+'</p><div class="resultActions"><button class="share" onclick="shareResult()">'+t().share+'</button><button class="again" onclick="openTool('+current+')">'+t().again+'</button></div></div>';
  }else{
   $("formArea").innerHTML='<div class="result-screen"><div class="result-big-emoji">'+icon+'</div><span class="resultChip">'+t().labels[current]+'</span><h2>'+escapeHTML(title)+'</h2>'+scoreView+'<p class="result-detail">'+escapeHTML(detail)+'</p><div class="result-name-display">'+escapeHTML(names)+'</div><p class="disclaimer">'+t().disclaimer+'</p><div class="resultActions"><button class="share" onclick="shareResult()">'+t().share+'</button><button class="again" onclick="openTool('+current+')">'+t().again+'</button></div></div>';
  }
