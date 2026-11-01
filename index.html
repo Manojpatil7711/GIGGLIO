@@ -143,7 +143,7 @@ const themeClass=["theme-love","theme-couple","theme-friend","theme-baby","theme
 const themeEmojis=[["❤️","💋","🌹","💘","💕","💞"],["💑","💗","✨","💐","💓"],["🌹","🫶","🌷","💛","🌼","🤝"],["🧸","🌈","⭐","🍼","🦋"],["😂","🤣","🔥","🤡","💥"],["🦋","💌","💗","🌸","💘"]];
 let sessionSeed=0;const lastVisibleResult={};
 function openTool(i){
- current=i;quizStep=0;quizAnswers=[];
+ current=i;
  $("modalTitle").textContent=t().title[i];
  $("modal").classList.add("show");document.body.style.overflow="hidden";
  const d=document.querySelector(".dialog");d.className="dialog fullscreen "+themeClass[i];
@@ -183,7 +183,7 @@ function makeResult(){
  4:["Your roast score is hotter than your phone! 🔥","A walking plot twist with premium drama! 🎭","Certified legend. Handle with snacks! 🍟","Your vibe has its own warning label! 😂","Too iconic for ordinary settings! 😎"],
  5:["Butterflies have entered the chat! 🦋","A cute little crush with big-screen energy! 💌","Your heart just sent a notification! 💗","A sweet secret with a rom-com soundtrack! 🌸"]
  };
- const score=48+(roll%53);
+ let score=48+(roll%53);
  const localizedLines=[t().loveLine,t().coupleLine,t().friendLine,t().babyLine?[t().babyLine]:null,t().roastLine,t().crushLine];
  const linePool=localizedLines[current]||lines[current];
  let line=linePool[(roll>>>8)%linePool.length];
@@ -193,7 +193,7 @@ function makeResult(){
   const candidateScore=48+((roll+attempts*7919)%53);
   const candidateLine=linePool[((roll>>>8)+attempts)%linePool.length];
   signature=current+"|"+candidateScore+"|"+candidateLine;
-  if(lastVisibleResult[current]!==signature){line=candidateLine;break}
+  if(lastVisibleResult[current]!==signature){line=candidateLine;score=candidateScore;break}
   attempts++;
  }
  lastVisibleResult[current]=signature;
