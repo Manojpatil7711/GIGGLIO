@@ -240,5 +240,8 @@ function escapeHTML(value){return String(value).replace(/[&<>"']/g,ch=>({"&":"&a
 function shareResult(){let url="https://wa.me/?text="+encodeURIComponent(shareText);if(navigator.share){navigator.share({title:"GIGGLIO result",text:shareText}).catch(()=>{})}else window.open(url,"_blank","noopener")}
 function toast(s){$("toast").textContent=s;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2300)}
 $("lang").addEventListener("change",e=>{lang=e.target.value;render()});$("year").textContent=new Date().getFullYear();$("modal").addEventListener("click",e=>{if(e.target===$("modal"))closeModal()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});render();
+const heroEmojis=["💖","❤️","💘","😂","🔥","😍","🤣","💥","🫶","💋","✨","🥰","🤡","💯","💞","😎","🌹","🎉"];
+let heroEmojiIndex=0;
+setInterval(()=>{const el=$("heroEmoji");if(!el)return;heroEmojiIndex=(heroEmojiIndex+1)%heroEmojis.length;el.textContent=heroEmojis[heroEmojiIndex];el.style.animation="none";void el.offsetWidth;el.style.animation="emojiPunch .48s cubic-bezier(.2,.9,.25,1) both"},520);
 </script>
 </body></html>
