@@ -10,6 +10,46 @@
 <style>
 :root{--bg:#100b20;--panel:#1c1532;--panel2:#261b40;--ink:#fff8ff;--muted:#b9aecb;--pink:#ff5b9d;--violet:#a58bff;--gold:#ffd77b;--line:#ffffff18;--shadow:0 20px 60px #05020d80}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#39204f 0,transparent 36%),radial-gradient(ellipse at 100% 25%,#301b4b 0,transparent 32%),var(--bg);color:var(--ink);font-family:Inter,ui-rounded,system-ui,-apple-system,sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.wrap{width:min(1160px,92%);margin:auto}.nav{height:76px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:28px;font-weight:1000;letter-spacing:-1.5px}.logo i{font-style:normal;color:var(--pink)}.navright{display:flex;align-items:center;gap:12px}.tag{font-size:11px;font-weight:900;color:var(--gold);letter-spacing:1.5px}.lang{background:#ffffff12;color:white;border:1px solid var(--line);border-radius:99px;padding:9px 13px}.hero{border:1px solid #ffffff18;border-radius:34px;overflow:hidden;padding:56px 5%;background:linear-gradient(115deg,#2c1744ed,#21183bea 56%,#39204bdf);box-shadow:var(--shadow);position:relative}.hero:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:#ff5b9d18;right:-80px;top:-130px}.heroGrid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px;position:relative;z-index:1}.eyebrow{display:inline-flex;border:1px solid #ff8fbd55;background:#ff5b9d17;color:#ffacd0;padding:8px 13px;border-radius:99px;font-size:11px;font-weight:900;letter-spacing:1.4px}.hero h1{font-size:clamp(42px,7vw,78px);line-height:.98;letter-spacing:-4px;margin:20px 0}.hero h1 span{background:linear-gradient(90deg,#ff75ae,#c2a8ff);background-clip:text;color:transparent}.hero p{max-width:560px;color:#d2c8df;font-size:17px;line-height:1.7}.primary{border:0;border-radius:14px;padding:14px 22px;background:linear-gradient(100deg,var(--pink),#a77bff);color:white;font-weight:900;box-shadow:0 9px 25px #ff5b9d30}.heroArt{height:270px;display:grid;place-items:center;position:relative}.heart{width:190px;height:190px;background:linear-gradient(145deg,#ff8fba,#ad76ff);clip-path:path("M95 174 C75 151 8 105 8 55 C8 5 70 -4 95 36 C120 -4 182 5 182 55 C182 105 115 151 95 174");filter:drop-shadow(0 25px 30px #ff5b9d55);display:grid;place-items:center;font-size:76px}.float{position:absolute;font-size:34px;animation:bob 4s ease-in-out infinite}.f1{left:10%;top:15%}.f2{right:9%;top:20%;animation-delay:-1s}.f3{left:18%;bottom:8%;animation-delay:-2s}.f4{right:14%;bottom:8%;animation-delay:-.5s}@keyframes bob{50%{transform:translateY(-13px) rotate(10deg)}}.ad-slot{margin:26px auto 36px;min-height:100px;border:1px dashed #ffffff35;border-radius:16px;background:#ffffff06;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;color:#8f829f}.ad-slot strong{font-size:10px;letter-spacing:2px;color:#b5a8c7}.ad-slot span{font-size:12px;margin-top:5px}.ad-wide{max-width:970px;min-height:100px}.ad-inline{max-width:970px;min-height:90px}.sectionHead{display:flex;align-items:end;justify-content:space-between;margin:44px 0 20px}.sectionHead h2{font-size:32px;letter-spacing:-1px;margin:0}.sectionHead p{color:var(--muted);margin:7px 0 0}.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.tool{background:linear-gradient(150deg,#261b40,#1a142e);border:1px solid var(--line);border-radius:23px;padding:22px;box-shadow:0 12px 35px #05020d44;transition:.22s;min-height:220px;display:flex;flex-direction:column}.tool:hover{transform:translateY(-5px);border-color:#ff7eb455}.toolIcon{width:57px;height:57px;border-radius:18px;display:grid;place-items:center;font-size:30px;background:#ffffff12;margin-bottom:17px}.tool h3{font-size:19px;margin:0 0 8px}.tool p{color:var(--muted);font-size:13px;line-height:1.55;margin:0 0 18px;flex:1}.tool button{width:100%;border:1px solid #ff78ad55;border-radius:12px;background:#ff5b9d16;color:#ffb5d1;padding:12px;font-weight:900}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:42px 0}.stepCard{padding:19px;border:1px solid var(--line);background:#ffffff08;border-radius:18px}.stepCard b{font-size:23px}.stepCard h3{font-size:15px;margin:10px 0 5px}.stepCard p{font-size:12px;color:var(--muted);margin:0;line-height:1.5}.foot{border-top:1px solid var(--line);padding:28px 0 40px;color:#a99dbb;font-size:12px;display:flex;justify-content:space-between;gap:20px}.modal{position:fixed;inset:0;z-index:20;background:#090512d9;backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px}.modal.show{display:flex}.dialog{width:min(540px,100%);max-height:92vh;overflow:auto;background:linear-gradient(150deg,#2b2045,#19132d);border:1px solid #ffffff25;border-radius:26px;padding:24px;box-shadow:var(--shadow)}.dialogTop{display:flex;justify-content:space-between;align-items:center}.dialogTop h2{font-size:25px;margin:5px 0 17px}.close{width:38px;height:38px;border:0;border-radius:50%;background:#ffffff15;color:white;font-size:22px}.fields{display:grid;gap:13px;margin:18px 0}.field label{display:block;font-size:12px;font-weight:800;color:#d5c8e4;margin-bottom:7px}.field input{width:100%;background:#100b20;border:1px solid #ffffff25;border-radius:13px;padding:14px;color:white;outline:none}.field input:focus{border-color:#ff7eae}.field input::placeholder{color:#776b88}.go{width:100%;border:0;border-radius:13px;padding:14px;background:linear-gradient(100deg,var(--pink),#997cff);color:white;font-weight:900}.result{text-align:center;padding:18px 4px 8px}.resultIcon{font-size:64px}.result h2{font-size:29px;margin:8px 0}.result p{color:#d0c5de;line-height:1.65}.meter{font-size:58px;font-weight:1000;letter-spacing:-3px;background:linear-gradient(90deg,#ff79b0,#c0a5ff);background-clip:text;color:transparent;margin:10px 0}.resultChip{display:inline-block;border:1px solid #ffffff25;background:#ffffff0d;border-radius:99px;padding:8px 14px;color:#ffd6e7;font-size:12px;font-weight:800}.resultActions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:18px}.resultActions button{border:0;border-radius:12px;padding:12px 16px;font-weight:900}.share{background:#1fae70;color:white}.again{background:#ffffff17;color:white}.disclaimer{font-size:10px!important;color:#9488a7!important;margin-top:18px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#fff;color:#21152f;border-radius:99px;padding:11px 18px;font-size:13px;font-weight:800;display:none;z-index:40}.toast.show{display:block}@media(max-width:760px){.nav{height:66px}.hero{padding:36px 6%;border-radius:24px}.heroGrid{grid-template-columns:1fr;text-align:center}.hero p{margin:0 auto 20px}.heroArt{height:195px}.heart{width:145px;height:145px;font-size:60px}.tools{grid-template-columns:repeat(2,1fr);gap:12px}.tool{padding:16px;min-height:220px}.sectionHead h2{font-size:27px}.steps{grid-template-columns:1fr}.foot{display:block;text-align:center}.foot span{display:block;margin:7px}}@media(max-width:440px){.tools{grid-template-columns:1fr}.tool{min-height:0;display:grid;grid-template-columns:57px 1fr;column-gap:13px}.toolIcon{grid-row:span 2;margin:0}.tool h3{align-self:end}.tool p{margin:4px 0 12px}.tool button{grid-column:1/-1}.hero h1{letter-spacing:-2.5px}.tag{display:none}}
+
+/* Full-screen interactive game experience */
+.modal{padding:0;background:rgba(5,2,14,.96)}
+.dialog{width:100%;height:100%;max-height:100%;min-height:100%;border:0;border-radius:0;padding:clamp(18px,4vw,42px);overflow:auto;display:flex;flex-direction:column;justify-content:center;position:relative}
+.dialog.fullscreen{background:radial-gradient(circle at 50% 0%,var(--game-glow,#64152d),transparent 55%),linear-gradient(145deg,#100b20,#1b102a)}
+.dialog.theme-love{--game-glow:#8e102d;--game-accent:#ff315e}
+.dialog.theme-friend{--game-glow:#8b2450;--game-accent:#ff7cab}
+.dialog.theme-crush{--game-glow:#7b174e;--game-accent:#ff62a5}
+.dialog.theme-baby{--game-glow:#265d83;--game-accent:#79d7ff}
+.dialog.theme-couple{--game-glow:#63328b;--game-accent:#c59aff}
+.dialog.theme-roast{--game-glow:#8b4a12;--game-accent:#ffc15c}
+.dialogTop{position:relative;z-index:2;width:min(680px,100%);margin:0 auto}
+#formArea{width:min(680px,100%);margin:0 auto;position:relative;z-index:2}
+.game-screen{text-align:center;min-height:65vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative}
+.game-kicker{font-size:11px;font-weight:1000;letter-spacing:2px;color:var(--game-accent);margin-bottom:16px}
+.game-question{font-size:clamp(27px,5vw,48px);line-height:1.12;letter-spacing:-1.5px;margin:0 auto 28px;max-width:650px}
+.game-options{width:min(560px,100%);display:grid;gap:12px}
+.game-option{width:100%;padding:17px 18px;border-radius:17px;border:1px solid #ffffff28;background:#ffffff0d;color:#fff;font-weight:800;text-align:left;transition:.18s}
+.game-option:active{transform:scale(.98)}
+.game-option:hover{border-color:var(--game-accent);background:#ffffff19}
+.game-progress{width:min(560px,100%);height:6px;border-radius:9px;background:#ffffff20;overflow:hidden;margin:0 auto 28px}
+.game-progress span{display:block;height:100%;background:var(--game-accent);border-radius:9px;transition:width .3s}
+.game-emoji-rain{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.game-emoji{position:absolute;bottom:-50px;left:var(--x);font-size:var(--size);opacity:0;animation:emojiRise var(--duration) linear infinite;animation-delay:var(--delay);filter:drop-shadow(0 5px 8px #0005)}
+@keyframes emojiRise{0%{transform:translateY(0) rotate(0deg) scale(.65);opacity:0}12%{opacity:.85}85%{opacity:.75}100%{transform:translateY(-110vh) rotate(35deg) scale(1.15);opacity:0}}
+.result-screen{text-align:center;position:relative;z-index:2;animation:resultPop .55s cubic-bezier(.2,.9,.2,1) both}
+@keyframes resultPop{from{opacity:0;transform:translateY(22px) scale(.94)}to{opacity:1;transform:none}}
+.result-big-emoji{font-size:clamp(64px,14vw,112px);filter:drop-shadow(0 12px 25px #0005);animation:heartBeat 1.3s ease-in-out infinite}
+@keyframes heartBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.13)}30%{transform:scale(1)}45%{transform:scale(1.08)}}
+.result-score{font-size:clamp(58px,13vw,100px);font-weight:1000;letter-spacing:-5px;color:var(--game-accent);text-shadow:0 8px 35px #0005;margin:6px 0}
+.result-screen h2{font-size:clamp(26px,5vw,42px);margin:10px 0}
+.result-screen p{color:#e2d8ed;font-size:16px;line-height:1.7;max-width:540px;margin:10px auto}
+.result-screen .resultChip{border-color:var(--game-accent);color:#fff}
+.game-close{position:absolute;top:16px;right:16px;z-index:5}
+.dialog.fullscreen .fields{width:min(500px,100%);margin:26px auto}
+.dialog.fullscreen .go{width:min(500px,100%);display:block;margin:0 auto}
+.quiz-start-note{color:#bdb0ce;text-align:center;font-size:12px;margin:18px auto;max-width:450px}
+@media(max-width:600px){.dialog{padding:16px}.dialogTop h2{font-size:21px}.game-question{font-size:29px}.game-option{padding:16px}.game-screen{min-height:72vh}.game-close{top:9px;right:9px}}
+@media(prefers-reduced-motion:reduce){.game-emoji,.result-big-emoji,.result-screen{animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -34,11 +74,78 @@ const icons=["💘","💑","🫶","👶","😂","🦋"];
 let lang="en",current=0,shareText="";
 const $=id=>document.getElementById(id),t=()=>copy[lang];
 function render(){let x=t();["eyebrow","intro","explore","toolsTitle","toolsSub","s1t","s1p","s2t","s2p","s3t","s3p","footerText"].forEach(k=>$(k).textContent=x[k]);$("toolGrid").innerHTML=x.title.map((name,i)=>'<article class="tool"><div class="toolIcon">'+icons[i]+'</div><h3>'+name+'</h3><p>'+x.desc[i]+'</p><button onclick="openTool('+i+')">'+x.action[i]+' →</button></article>').join("");document.documentElement.lang=lang}
-function openTool(i){current=i;$("modalTitle").textContent=t().title[i];$("modal").classList.add("show");document.body.style.overflow="hidden";let two=i!==4;$("formArea").innerHTML='<div class="fields">'+(two?'<div class="field"><label for="nameA">'+t().name1+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div><div class="field"><label for="nameB">'+t().name2+'</label><input id="nameB" maxlength="32" autocomplete="off" placeholder="'+t().placeholder2+'"></div>':'<div class="field"><label for="nameA">'+t().yourName+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div>')+'</div><button class="go" onclick="makeResult()">'+t().go+'</button><p class="disclaimer">'+t().disclaimer+'</p>';$("nameA").focus()}
+const quizSets=[
+[{q:"What makes your heart smile the most?",a:["A sweet message 💌","A surprise hug 🤗","Laughing together 😂","A little adventure ✨"]},{q:"Your perfect date vibe?",a:["Candlelight & roses 🌹","Street food & long talks 🍟","Movie night & cuddles 🎬","Spontaneous road trip 🚗"]},{q:"What matters most in a bond?",a:["Trust and loyalty 💖","Fun and laughter 😄","Understanding 🤝","Little everyday efforts 🌷"]},{q:"Pick your love-song mood",a:["Soft romantic 🎶","Cute and playful 💞","Deep and emotional 🥹","Dance and madness 💃"]}],
+[{q:"Your best friend calls at 2 AM. You…",a:["Answer instantly 📞","Ask what trouble now 😂","Bring snacks and show up 🍕","Send 17 voice notes 🎙️"]},{q:"Your friendship superpower?",a:["Keeping every secret 🔐","Making them laugh 🤣","Giving honest advice 💬","Being there, always 🫶"]},{q:"Your ideal bestie plan?",a:["A long chai session ☕","A crazy trip 🚌","Gaming all night 🎮","Doing absolutely nothing 😎"]},{q:"Choose your friendship symbol",a:["A rose 🌹","A goofy meme 🤪","A matching bracelet 💫","A lifetime promise 💛"]}],
+[{q:"When your crush texts, you…",a:["Reply in 0.2 seconds 📱","Type, delete, type again 😅","Act totally cool 😎","Show your bestie first 👀"]},{q:"Your crush notices you. Your reaction?",a:["Instant butterflies 🦋","A shy smile 😊","Heart doing dhol beats 🥁","Pretend nothing happened 🙈"]},{q:"Your dream first conversation?",a:["A cute compliment 💗","A shared joke 😂","A deep late-night chat 🌙","A random hello 👋"]},{q:"Choose your secret signal",a:["A smile 😊","A song link 🎵","A tiny wave 👋","A funny reel 📲"]}],
+[{q:"Choose a vibe for your imaginary little one",a:["Sweet and gentle 🌸","Curious explorer 🚀","Funny little star ⭐","Bold and fearless 🦁"]},{q:"Pick a name style",a:["Short and cute 🧸","Modern and cool ✨","Classic and timeless 🌿","Rare and magical 🪄"]},{q:"Favourite tiny adventure?",a:["Garden full of flowers 🌼","Beach and bubbles 🫧","Cloud watching ☁️","Storybook kingdom 🏰"]},{q:"Pick a lucky symbol",a:["Moon 🌙","Star ⭐","Rainbow 🌈","Butterfly 🦋"]}],
+[{q:"Pick your personal chaos level",a:["Cute chaos 😇","CEO of overthinking 🧠","Meme machine 🤣","Legendary drama 🎭"]},{q:"Your most likely superpower?",a:["Eating and not sharing 🍟","Being late with confidence ⏰","Winning arguments in the shower 🚿","Sleeping through anything 😴"]},{q:"Choose your villain origin story",a:["Low phone battery 🔋","Someone ate my snack 🍫","Seen-zoned for 3 hours 👀","Slow internet 🌐"]},{q:"Your signature entrance?",a:["Main character walk 😎","Trip, recover, pose 💃","Silent but iconic 🕶️","Confetti explosion 🎉"]}],
+[{q:"Your crush looks your way. What now?",a:["Smile back 💕","Look away, then peek 🙈","Say hello 👋","Forget how to function 😵‍💫"]},{q:"What would you send first?",a:["A cute meme 😂","A simple hey 💬","A song 🎵","A thoughtful compliment 🌷"]},{q:"Your perfect crush moment?",a:["Eye contact across the room ✨","Laughing at the same joke 😄","A surprise message 💌","Walking together 🌙"]},{q:"Pick your courage level",a:["Bold enough to say hi 🦁","Need one bestie pep talk 🫶","Practising in my head 😅","One day… maybe 😳"]}]
+];
+const themeClass=["theme-love","theme-couple","theme-friend","theme-baby","theme-roast","theme-crush"];
+const themeEmojis=[["❤️","💋","🌹","💘","💕","💞"],["💑","💗","✨","💐","💓"],["🌹","🫶","🌷","💛","🌼","🤝"],["🧸","🌈","⭐","🍼","🦋"],["😂","🤣","🔥","🤡","💥"],["🦋","💌","💗","🌸","💘"]];
+let quizStep=0,quizAnswers=[],sessionSeed=0;
+function openTool(i){
+ current=i;quizStep=0;quizAnswers=[];
+ $("modalTitle").textContent=t().title[i];
+ $("modal").classList.add("show");document.body.style.overflow="hidden";
+ const d=document.querySelector(".dialog");d.className="dialog fullscreen "+themeClass[i];
+ const two=i!==4;
+ $("formArea").innerHTML='<div class="fields">'+(two?'<div class="field"><label for="nameA">'+t().name1+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div><div class="field"><label for="nameB">'+t().name2+'</label><input id="nameB" maxlength="32" autocomplete="off" placeholder="'+t().placeholder2+'"></div>':'<div class="field"><label for="nameA">'+t().yourName+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div>')+'</div><button class="go" onclick="startQuiz()">'+t().go+'</button><p class="quiz-start-note">'+t().disclaimer+'</p>';
+ $("nameA").focus();emojiRain();
+}
+function emojiRain(){
+ const rain=document.getElementById("emojiRain");if(rain)rain.remove();
+ const layer=document.createElement("div");layer.id="emojiRain";layer.className="game-emoji-rain";
+ const pool=themeEmojis[current]||themeEmojis[0];
+ for(let i=0;i<22;i++){const e=document.createElement("span");e.className="game-emoji";e.textContent=pool[i%pool.length];e.style.setProperty("--x",(Math.random()*100)+"%");e.style.setProperty("--size",(18+Math.random()*23)+"px");e.style.setProperty("--duration",(5+Math.random()*7)+"s");e.style.setProperty("--delay",(-Math.random()*12)+"s");layer.appendChild(e)}
+ document.querySelector(".dialog").prepend(layer);
+}
+function startQuiz(){
+ const a=$("nameA").value.trim(),b=$("nameB")?.value.trim()||"";
+ if(!a||(current!==4&&!b)){toast(t().empty);return}
+ window.gameNames={a,b};quizStep=0;quizAnswers=[];sessionSeed=(crypto.getRandomValues(new Uint32Array(1))[0]^Date.now())>>>0;
+ showQuestion();
+}
+function showQuestion(){
+ const qs=quizSets[current];const q=qs[quizStep];const pct=Math.round((quizStep/qs.length)*100);
+ $("modalTitle").textContent=t().title[current]+" · "+(quizStep+1)+"/"+qs.length;
+ $("formArea").innerHTML='<div class="game-screen"><div class="game-kicker">'+t().labels[current]+' · QUESTION '+(quizStep+1)+'</div><div class="game-progress"><span style="width:'+pct+'%"></span></div><h2 class="game-question">'+q.q+'</h2><div class="game-options">'+q.a.map((v,i)=>'<button class="game-option" onclick="answerQuestion('+i+')">'+v+'</button>').join("")+'</div><p class="quiz-start-note">✨ '+(lang==="mr"?"एक पर्याय निवडा आणि पुढे जा":lang==="hi"?"एक विकल्प चुनें और आगे बढ़ें":"Choose one answer to continue")+'</p></div>';
+}
+function answerQuestion(n){
+ quizAnswers.push(n);quizStep++;
+ if(quizStep<quizSets[current].length){showQuestion();return}
+ makeResult();
+}
 function closeModal(){$("modal").classList.remove("show");document.body.style.overflow=""}
 function hash(s){let h=2166136261;for(let c of s.toLowerCase().replace(/\s/g,"")){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
 function blend(a,b){a=a.trim();b=b.trim();let cut1=Math.max(1,Math.ceil(a.length/2)),cut2=Math.floor(b.length/2);let s=a.slice(0,cut1)+b.slice(cut2);return s.charAt(0).toUpperCase()+s.slice(1)}
-function makeResult(){let a=$("nameA").value.trim(),b=$("nameB")?.value.trim()||"";if(!a||(current!==4&&!b)){toast(t().empty);return}let h=hash(a+"|"+b),pct=55+(h%46),title="",detail="",icon=icons[current],extra="";if(current===0){title=t().love;detail=t().loveLine[h%4];extra=pct+"%"}if(current===1){title=t().couple;extra=blend(a,b);detail=""+a+" + "+b+" = "+extra}if(current===2){title=t().friend;detail=t().friendLine[h%4];extra=(60+(h%41))+"%"}if(current===3){title=t().baby;extra=blend(a,b);detail=t().babyLine}if(current===4){title=t().roast;detail=t().roastLine[h%4];extra=a}if(current===5){title=t().crush;detail=t().crushLine[h%4];extra=pct+"%"}let headline=current===0||current===2||current===5?'<div class="meter">'+extra+'</div>':'<h2>'+extra+'</h2>';let line=current===1?detail:detail;shareText="GIGGLIO ✦ "+t().title[current]+"\n"+a+(b?" + "+b:"")+"\n"+title+": "+extra+"\n"+detail+"\n"+location.origin; $("formArea").innerHTML='<div class="result" id="resultCard"><div class="resultIcon">'+icon+'</div><span class="resultChip">'+t().labels[current]+'</span><p>'+title+'</p>'+headline+'<p>'+line+'</p><p class="disclaimer">'+t().disclaimer+'</p></div><div class="resultActions"><button class="share" onclick="shareResult()">'+t().share+'</button><button class="again" onclick="openTool('+current+')">'+t().again+'</button></div>'}
+function makeResult(){
+ const {a,b}=window.gameNames;const rand=()=>crypto.getRandomValues(new Uint32Array(1))[0];
+ const roll=(rand()^sessionSeed^Date.now())>>>0;
+ const lines={
+ 0:["A little romance, a lot of butterflies! 💓","Your hearts have their own playlist! 🎶","Cute chemistry with a plot twist! 🌹","A rom-com moment waiting to happen! 🎬","Someone call the love soundtrack! 💘"],
+ 1:["Two names, one legendary duo! ✨","A nickname made for matching profile pics! 💑","This duo deserves its own fan club! 🌟","Cute enough to break the internet! 💗"],
+ 2:["Bestie bond: rose-powered and unbreakable! 🌹","Partners in laughter and lifetime memories! 🫶","A friendship blooming like a garden! 🌷","Ride-or-die energy detected! 💛","Two legends, zero boring days! 🌼"],
+ 3:["A tiny star with a big imagination! ⭐","A little sunshine with a magical name! 🌈","A name made for storybook adventures! 🧸"],
+ 4:["Your roast score is hotter than your phone! 🔥","A walking plot twist with premium drama! 🎭","Certified legend. Handle with snacks! 🍟","Your vibe has its own warning label! 😂","Too iconic for ordinary settings! 😎"],
+ 5:["Butterflies have entered the chat! 🦋","A cute little crush with big-screen energy! 💌","Your heart just sent a notification! 💗","A sweet secret with a rom-com soundtrack! 🌸"]
+ };
+ const score=48+(roll%53),line=lines[current][(roll>>>8)%lines[current].length];
+ let title="",extra="",detail=line,icon=themeEmojis[current][(roll>>>16)%themeEmojis[current].length];
+ if(current===0){title=t().love;extra=score+"%"}
+ if(current===1){title=t().couple;extra=blend(a,b)}
+ if(current===2){title=t().friend;extra=(52+((roll>>>4)%49))+"%"}
+ if(current===3){title=t().baby;extra=blend(a,b)}
+ if(current===4){title=t().roast;extra=a}
+ if(current===5){title=t().crush;extra=score+"%"}
+ const scoreView=[0,2,5].includes(current)?'<div class="result-score">'+extra+'</div>':'<h2>'+extra+'</h2>';
+ const names=a+(b?" + "+b:"");
+ shareText="GIGGLIO ✦ "+t().title[current]+"\n"+names+"\n"+title+": "+extra+"\n"+detail+"\n"+location.origin;
+ $("modalTitle").textContent=t().title[current]+" · RESULT";
+ $("formArea").innerHTML='<div class="result-screen"><div class="result-big-emoji">'+icon+'</div><span class="resultChip">'+t().labels[current]+'</span><h2>'+title+'</h2>'+scoreView+'<p>'+detail+'</p><p style="font-weight:800;color:#fff">'+names+'</p><p class="disclaimer">'+t().disclaimer+'</p><div class="resultActions"><button class="share" onclick="shareResult()">'+t().share+'</button><button class="again" onclick="openTool('+current+')">'+t().again+'</button></div></div>';
+ emojiRain();
+}
 function shareResult(){let url="https://wa.me/?text="+encodeURIComponent(shareText);if(navigator.share){navigator.share({title:"GIGGLIO result",text:shareText}).catch(()=>{})}else window.open(url,"_blank","noopener")}
 function toast(s){$("toast").textContent=s;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2300)}
 $("lang").addEventListener("change",e=>{lang=e.target.value;render()});$("year").textContent=new Date().getFullYear();$("modal").addEventListener("click",e=>{if(e.target===$("modal"))closeModal()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});render();
