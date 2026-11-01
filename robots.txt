@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gigglio.pages.dev/sitemap.xml
