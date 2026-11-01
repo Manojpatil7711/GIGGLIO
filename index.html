@@ -79,6 +79,25 @@
 @media(max-width:760px){.couple-showcase{height:230px}.couple-stage{height:190px}.couple-pair{font-size:78px}}
 @media(prefers-reduced-motion:reduce){.couple-pair span,.scene-heart,.scene-spark,.instant-reveal .reveal-heart{animation:none!important}}
 
+
+/* Name Roast: bold meme-first presentation, no floating emoji effects */
+.roast-entry{text-align:center;max-width:520px;margin:0 auto;padding:18px 0}
+.roast-entry-emoji{font-size:clamp(100px,24vw,170px);line-height:1.1;margin:0 auto 12px;filter:drop-shadow(0 12px 22px #0007)}
+.roast-entry h3{font-family:Impact,"Arial Black",system-ui,sans-serif;font-size:clamp(30px,7vw,54px);line-height:.98;letter-spacing:1px;margin:8px 0;text-transform:uppercase;color:#ffd166;text-shadow:3px 4px 0 #5c260b}
+.roast-entry p{color:#f5d7ae;font-size:16px;font-weight:800;margin:12px 0 22px}
+.roast-entry input{display:block;width:100%;padding:19px 22px;border:2px solid #ffc15c;border-radius:18px;background:#160d18;color:#fff;text-align:center;font-size:22px;font-weight:900;outline:none;box-shadow:0 8px 0 #572b16}
+.roast-entry input::placeholder{color:#a99585}
+.roast-entry .go{margin-top:20px;max-width:100%;font-family:Impact,"Arial Black",system-ui,sans-serif;font-size:22px;letter-spacing:1px;background:linear-gradient(100deg,#ff9b27,#ffcf58);color:#351506;box-shadow:0 7px 0 #73370f}
+.roast-result{max-width:760px;margin:0 auto;padding:12px 0 22px}
+.roast-result .result-big-emoji{font-size:clamp(120px,27vw,190px);line-height:1;filter:drop-shadow(0 14px 20px #0008);animation:none}
+.roast-stamp{display:inline-block;margin:16px auto 10px;padding:9px 16px;border:2px dashed #ffd166;border-radius:10px;color:#ffd166;font-size:clamp(13px,3vw,19px);font-weight:1000;letter-spacing:2px;transform:rotate(-2deg)}
+.roast-headline{font-family:Impact,"Arial Black",system-ui,sans-serif!important;font-size:clamp(38px,9vw,76px)!important;line-height:.96!important;letter-spacing:1px!important;text-transform:uppercase;color:#fff!important;text-shadow:4px 5px 0 #9b3d12,0 10px 25px #0008;margin:15px auto 20px!important;overflow-wrap:anywhere}
+.roast-copy{max-width:720px;margin:0 auto;padding:22px 18px;border:3px solid #ffd166;border-radius:18px;background:linear-gradient(135deg,#ffb52e,#ff7b24);color:#351506;font-family:Impact,"Arial Black",system-ui,sans-serif;font-size:clamp(27px,6vw,48px);line-height:1.08;letter-spacing:.3px;text-transform:uppercase;box-shadow:0 10px 0 #71340f,0 18px 35px #0005}
+.roast-name{margin:20px auto 0;color:#ffe5b0;font-size:clamp(20px,4vw,30px);font-weight:1000;letter-spacing:2px;text-transform:uppercase}
+.roast-result .disclaimer{margin-top:22px!important}
+@media(max-width:600px){.roast-entry{padding:10px 0}.roast-copy{padding:19px 14px}.roast-result{padding-top:5px}}
+@media(prefers-reduced-motion:reduce){.roast-result,.roast-result *{animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -148,15 +167,12 @@ function openTool(i){
  $("modal").classList.add("show");document.body.style.overflow="hidden";
  const d=document.querySelector(".dialog");d.className="dialog fullscreen "+themeClass[i];
  const two=i!==4;
- $("formArea").innerHTML='<div class="fields">'+(two?'<div class="field"><label for="nameA">'+t().name1+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div><div class="field"><label for="nameB">'+t().name2+'</label><input id="nameB" maxlength="32" autocomplete="off" placeholder="'+t().placeholder2+'"></div>':'<div class="field"><label for="nameA">'+t().yourName+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div>')+'</div><button class="go" onclick="startQuiz()">'+t().go+'</button><p class="quiz-start-note">'+t().disclaimer+'</p>';
- $("nameA").focus();emojiRain();
-}
-function emojiRain(){
- const rain=document.getElementById("emojiRain");if(rain)rain.remove();
- const layer=document.createElement("div");layer.id="emojiRain";layer.className="game-emoji-rain";
- const pool=themeEmojis[current]||themeEmojis[0];
- for(let i=0;i<22;i++){const e=document.createElement("span");e.className="game-emoji";e.textContent=pool[i%pool.length];e.style.setProperty("--x",(Math.random()*100)+"%");e.style.setProperty("--size",(18+Math.random()*23)+"px");e.style.setProperty("--duration",(5+Math.random()*7)+"s");e.style.setProperty("--delay",(-Math.random()*12)+"s");layer.appendChild(e)}
- document.querySelector(".dialog").prepend(layer);
+ if(current===4){
+  $("formArea").innerHTML='<div class="roast-entry"><div class="roast-entry-emoji">🤡</div><h3>WHO IS GETTING ROASTED?</h3><p>Drop a name. We bring the friendly fire 🔥</p><input id="nameA" maxlength="32" autocomplete="off" aria-label="Type a name" placeholder="Type a name..."><button class="go" onclick="startQuiz()">ROAST THIS NAME 🔥</button><p class="quiz-start-note">'+t().disclaimer+'</p></div>';
+ }else{
+  $("formArea").innerHTML='<div class="fields">'+(two?'<div class="field"><label for="nameA">'+t().name1+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div><div class="field"><label for="nameB">'+t().name2+'</label><input id="nameB" maxlength="32" autocomplete="off" placeholder="'+t().placeholder2+'"></div>':'<div class="field"><label for="nameA">'+t().yourName+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div>')+'</div><button class="go" onclick="startQuiz()">'+t().go+'</button><p class="quiz-start-note">'+t().disclaimer+'</p>';
+ }
+ $("nameA").focus();
 }
 function startQuiz(){
  const a=$("nameA").value.trim(),b=$("nameB")?.value.trim()||"";
@@ -166,8 +182,7 @@ function startQuiz(){
  const line=lang==="mr"?"तुमच्यासाठी एक खास निकाल तयार होतोय…":lang==="hi"?"आपका खास रिज़ल्ट तैयार हो रहा है…":"Creating your one-of-a-kind result…";
  $("modalTitle").textContent=lang==="mr"?"मॅजिक सुरू!":lang==="hi"?"मैजिक शुरू!":"Here comes the magic!";
  $("formArea").innerHTML='<div class="instant-reveal"><div class="reveal-heart">'+(themeEmojis[current][0])+'</div><strong>'+line+'</strong><p>✨ '+(lang==="mr"?"थोडीशी मजा, लगेच निकाल":lang==="hi"?"थोड़ी मस्ती, तुरंत नतीजा":"A little sparkle. An instant result.")+'</p></div>';
- emojiRain();
- setTimeout(makeResult,850);
+ setTimeout(makeResult,650);
 }
 function closeModal(){$("modal").classList.remove("show");document.body.style.overflow=""}
 function hash(s){let h=2166136261;for(let c of s.toLowerCase().replace(/\s/g,"")){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
@@ -208,9 +223,15 @@ function makeResult(){
  const names=a+(b?" + "+b:"");
  shareText="GIGGLIO ✦ "+t().title[current]+"\n"+names+"\n"+title+": "+extra+"\n"+detail+"\n"+location.origin;
  $("modalTitle").textContent=t().title[current]+" · RESULT";
- $("formArea").innerHTML='<div class="result-screen"><div class="result-big-emoji">'+icon+'</div><span class="resultChip">'+t().labels[current]+'</span><h2>'+title+'</h2>'+scoreView+'<p>'+detail+'</p><p style="font-weight:800;color:#fff">'+names+'</p><p class="disclaimer">'+t().disclaimer+'</p><div class="resultActions"><button class="share" onclick="shareResult()">'+t().share+'</button><button class="again" onclick="openTool('+current+')">'+t().again+'</button></div></div>';
- emojiRain();
+ if(current===4){
+  const safeName=escapeHTML(a);
+  $("formArea").innerHTML='<div class="result-screen roast-result"><div class="result-big-emoji">🤡</div><div class="roast-stamp">💀 FRIENDLY ROAST 💀</div><h2 class="roast-headline">'+safeName+' GOT ROASTED!</h2><div class="roast-copy">'+escapeHTML(detail)+'</div><div class="roast-name">'+safeName+'</div><p class="disclaimer">'+t().disclaimer+'</p><div class="resultActions"><button class="share" onclick="shareResult()">'+t().share+'</button><button class="again" onclick="openTool('+current+')">'+t().again+'</button></div></div>';
+ }else{
+  $("formArea").innerHTML='<div class="result-screen"><div class="result-big-emoji">'+icon+'</div><span class="resultChip">'+t().labels[current]+'</span><h2>'+title+'</h2>'+scoreView+'<p>'+detail+'</p><p style="font-weight:800;color:#fff">'+names+'</p><p class="disclaimer">'+t().disclaimer+'</p><div class="resultActions"><button class="share" onclick="shareResult()">'+t().share+'</button><button class="again" onclick="openTool('+current+')">'+t().again+'</button></div></div>';
+ }
+
 }
+function escapeHTML(value){return String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]))}
 function shareResult(){let url="https://wa.me/?text="+encodeURIComponent(shareText);if(navigator.share){navigator.share({title:"GIGGLIO result",text:shareText}).catch(()=>{})}else window.open(url,"_blank","noopener")}
 function toast(s){$("toast").textContent=s;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2300)}
 $("lang").addEventListener("change",e=>{lang=e.target.value;render()});$("year").textContent=new Date().getFullYear();$("modal").addEventListener("click",e=>{if(e.target===$("modal"))closeModal()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});render();
