@@ -93,7 +93,7 @@
 .tool-ad-mini{height:34px;border:1px dashed #ffffff30;border-radius:9px;background:#ffffff05;display:flex;align-items:center;justify-content:space-between;padding:0 10px;margin:-5px 0 14px;color:#9587a8;font-size:9px;letter-spacing:1px}
 .tool-ad-mini b{font-size:9px;color:#c7b8d5;letter-spacing:1.2px}
 .tools .tool{padding:16px 20px 20px}
-.fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:end}
+.fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:end}.baby-gender-field{width:min(760px,100%);margin:0 auto 22px}.baby-gender{width:100%;appearance:none;background:#100b20;border:1px solid #ffffff35;border-radius:15px;padding:16px;color:#fff;text-align:center;font-size:17px;font-weight:900;outline:none}.baby-gender:focus{border-color:#79d7ff}
 .fields .field{min-width:0}
 .fields .field input{text-align:center;font-size:clamp(16px,2.6vw,20px);font-weight:800;padding:17px 10px;border-radius:15px}
 .fields .field label{text-align:center;font-size:12px;letter-spacing:.7px;text-transform:uppercase}
@@ -232,6 +232,9 @@ const roastLinePacks={
   "{name}, तुझी To-do list आता ऐतिहासिक दस्तऐवज झालीये. 📜"
  ]
 };
+const babyNameLists={boy:["Aarav","Vivaan","Advik","Reyansh","Atharv","Ishaan","Kabir","Arjun","Ayaan","Vihaan","Krish","Rudra","Shaurya","Anay","Dhruv","Neil","Ritvik","Aarush","Kiaan","Yuvaan","Samarth","Vedant","Om","Agastya","Parth","Rohan","Aadi","Darsh","Laksh","Mihir"],girl:["Aadhya","Anaya","Saanvi","Aarohi","Myra","Kiara","Ira","Anvi","Pari","Diya","Aarna","Navya","Avni","Siya","Tara","Meera","Ishita","Prisha","Kavya","Riya","Vanya","Aaradhya","Mishka","Jiya","Naira","Ishani","Ruhani","Amaira","Reeva","Suhana"]};
+let lastBabyNameByGender={};
+function pickBabyName(gender){const list=babyNameLists[gender==="girl"?"girl":"boy"];let choices=list.filter(n=>n!==lastBabyNameByGender[gender]);const name=choices[crypto.getRandomValues(new Uint32Array(1))[0]%choices.length];lastBabyNameByGender[gender]=name;return name}
 let lastRoastTemplate="";
 // Track the last displayed result per game to avoid immediate repeats.
 let lastVisibleResult={};
@@ -245,14 +248,14 @@ function openTool(i){
  if(current===4){
   $("formArea").innerHTML='<div class="roast-entry"><div class="roast-entry-emoji">🤡</div><h3>WHO IS GETTING ROASTED?</h3><p>Drop a name. We bring the friendly fire 🔥</p><input id="nameA" maxlength="32" autocomplete="off" aria-label="Type a name" placeholder="Type a name..."><button class="go" onclick="startQuiz()">ROAST THIS NAME 🔥</button><p class="quiz-start-note">'+t().disclaimer+'</p></div>';
  }else{
-  $("formArea").innerHTML='<div class="fields">'+(two?'<div class="field"><label for="nameA">'+t().name1+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div><div class="field"><label for="nameB">'+t().name2+'</label><input id="nameB" maxlength="32" autocomplete="off" placeholder="'+t().placeholder2+'"></div>':'<div class="field"><label for="nameA">'+t().yourName+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div>')+'</div>'+(current===1?'<button class="swap-names" type="button" onclick="swapCoupleNames()">⇄ '+(lang==="mr"?"नावांचा क्रम बदला":lang==="hi"?"नामों का क्रम बदलें":"SWAP NAME ORDER")+'</button>':'')+'<button class="go" onclick="startQuiz()">'+t().go+'</button><p class="quiz-start-note">'+t().disclaimer+'</p>';
+  $("formArea").innerHTML='<div class="fields">'+(two?'<div class="field"><label for="nameA">'+t().name1+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div><div class="field"><label for="nameB">'+t().name2+'</label><input id="nameB" maxlength="32" autocomplete="off" placeholder="'+t().placeholder2+'"></div>':'<div class="field"><label for="nameA">'+t().yourName+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div>')+'</div>'+(current===3?'<div class="field baby-gender-field"><label for="babyGender">'+(lang==="mr"?"बाळासाठी नाव निवडा":lang==="hi"?"बच्चे के लिए नाम चुनें":"CHOOSE BABY GENDER")+'</label><select id="babyGender" class="baby-gender"><option value="boy">'+(lang==="mr"?"मुलगा 👦":lang==="hi"?"लड़का 👦":"Baby Boy 👦")+'</option><option value="girl">'+(lang==="mr"?"मुलगी 👧":lang==="hi"?"लड़की 👧":"Baby Girl 👧")+'</option></select></div>':'')+(current===1?'<button class="swap-names" type="button" onclick="swapCoupleNames()">⇄ '+(lang==="mr"?"नावांचा क्रम बदला":lang==="hi"?"नामों का क्रम बदलें":"SWAP NAME ORDER")+'</button>':'')+'<button class="go" onclick="startQuiz()">'+t().go+'</button><p class="quiz-start-note">'+t().disclaimer+'</p>';
  }
  $("nameA").focus();
 }
 function startQuiz(){
  const a=$("nameA").value.trim(),b=$("nameB")?.value.trim()||"";
  if(!a||(current!==4&&!b)){toast(t().empty);return}
- window.gameNames={a,b};
+ window.gameNames={a,b,gender:current===3?($("babyGender")?.value||"boy"):null};
  sessionSeed=crypto.getRandomValues(new Uint32Array(1))[0]>>>0;
  const line=lang==="mr"?"तुमच्यासाठी एक खास निकाल तयार होतोय…":lang==="hi"?"आपका खास रिज़ल्ट तैयार हो रहा है…":"Creating your one-of-a-kind result…";
  $("modalTitle").textContent=lang==="mr"?"मॅजिक सुरू!":lang==="hi"?"मैजिक शुरू!":"Here comes the magic!";
@@ -298,7 +301,7 @@ function makeResult(){
  if(current===0){title=t().love;extra=score+"%"}
  if(current===1){title=t().couple;extra=coupleNameOptions(a,b,roll)}
  if(current===2){title=t().friend;extra=(52+((roll>>>4)%49))+"%"}
- if(current===3){title=t().baby;extra=blend(a,b)}
+ if(current===3){const gender=window.gameNames.gender||"boy";title=gender==="girl"?(lang==="mr"?"तुमच्या बाळासाठी मुलीचे नाव":lang==="hi"?"आपकी बेबी गर्ल का नाम":"Your Baby Girl Name"):(lang==="mr"?"तुमच्या बाळासाठी मुलाचे नाव":lang==="hi"?"आपके बेबी बॉय का नाम":"Your Baby Boy Name");extra=pickBabyName(gender)}
  if(current===4){title=t().roast;extra=a}
  if(current===5){title=t().crush;extra=score+"%"}
  const scoreView=current===1?'<div class="couple-options">'+extra.map((name,i)=>'<div class="couple-option"><span class="couple-option-number">0'+(i+1)+'</span><strong>'+escapeHTML(name)+'</strong></div>').join('')+'</div>':[0,2,5].includes(current)?'<div class="result-score">'+extra+'</div>':'<h2>'+escapeHTML(extra)+'</h2>';
