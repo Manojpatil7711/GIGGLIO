@@ -234,6 +234,7 @@ const roastLinePacks={
 };
 const babyNameLists={boy:["Aarav","Vivaan","Advik","Reyansh","Atharv","Ishaan","Kabir","Arjun","Ayaan","Vihaan","Krish","Rudra","Shaurya","Anay","Dhruv","Neil","Ritvik","Aarush","Kiaan","Yuvaan","Samarth","Vedant","Om","Agastya","Parth","Rohan","Aadi","Darsh","Laksh","Mihir"],girl:["Aadhya","Anaya","Saanvi","Aarohi","Myra","Kiara","Ira","Anvi","Pari","Diya","Aarna","Navya","Avni","Siya","Tara","Meera","Ishita","Prisha","Kavya","Riya","Vanya","Aaradhya","Mishka","Jiya","Naira","Ishani","Ruhani","Amaira","Reeva","Suhana"]};
 let lastBabyNameByGender={};
+let lastBabyGender="boy";
 function pickBabyName(gender){const list=babyNameLists[gender==="girl"?"girl":"boy"];let choices=list.filter(n=>n!==lastBabyNameByGender[gender]);const name=choices[crypto.getRandomValues(new Uint32Array(1))[0]%choices.length];lastBabyNameByGender[gender]=name;return name}
 let lastRoastTemplate="";
 // Track the last displayed result per game to avoid immediate repeats.
@@ -248,14 +249,14 @@ function openTool(i){
  if(current===4){
   $("formArea").innerHTML='<div class="roast-entry"><div class="roast-entry-emoji">🤡</div><h3>WHO IS GETTING ROASTED?</h3><p>Drop a name. We bring the friendly fire 🔥</p><input id="nameA" maxlength="32" autocomplete="off" aria-label="Type a name" placeholder="Type a name..."><button class="go" onclick="startQuiz()">ROAST THIS NAME 🔥</button><p class="quiz-start-note">'+t().disclaimer+'</p></div>';
  }else{
-  $("formArea").innerHTML='<div class="fields">'+(two?'<div class="field"><label for="nameA">'+t().name1+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div><div class="field"><label for="nameB">'+t().name2+'</label><input id="nameB" maxlength="32" autocomplete="off" placeholder="'+t().placeholder2+'"></div>':'<div class="field"><label for="nameA">'+t().yourName+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div>')+'</div>'+(current===3?'<div class="field baby-gender-field"><label for="babyGender">'+(lang==="mr"?"बाळासाठी नाव निवडा":lang==="hi"?"बच्चे के लिए नाम चुनें":"CHOOSE BABY GENDER")+'</label><select id="babyGender" class="baby-gender"><option value="boy">'+(lang==="mr"?"मुलगा 👦":lang==="hi"?"लड़का 👦":"Baby Boy 👦")+'</option><option value="girl">'+(lang==="mr"?"मुलगी 👧":lang==="hi"?"लड़की 👧":"Baby Girl 👧")+'</option></select></div>':'')+(current===1?'<button class="swap-names" type="button" onclick="swapCoupleNames()">⇄ '+(lang==="mr"?"नावांचा क्रम बदला":lang==="hi"?"नामों का क्रम बदलें":"SWAP NAME ORDER")+'</button>':'')+'<button class="go" onclick="startQuiz()">'+t().go+'</button><p class="quiz-start-note">'+t().disclaimer+'</p>';
+  $("formArea").innerHTML='<div class="fields">'+(two?'<div class="field"><label for="nameA">'+t().name1+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div><div class="field"><label for="nameB">'+t().name2+'</label><input id="nameB" maxlength="32" autocomplete="off" placeholder="'+t().placeholder2+'"></div>':'<div class="field"><label for="nameA">'+t().yourName+'</label><input id="nameA" maxlength="32" autocomplete="off" placeholder="'+t().placeholder1+'"></div>')+'</div>'+(current===3?'<div class="field baby-gender-field"><label for="babyGender">'+(lang==="mr"?"बाळासाठी नाव निवडा":lang==="hi"?"बच्चे के लिए नाम चुनें":"CHOOSE BABY GENDER")+'</label><select id="babyGender" class="baby-gender"><option value="boy"'+(lastBabyGender==="boy"?" selected":"")+' >'+(lang==="mr"?"मुलगा 👦":lang==="hi"?"लड़का 👦":"Baby Boy 👦")+'</option><option value="girl"'+(lastBabyGender==="girl"?" selected":"")+' >'+(lang==="mr"?"मुलगी 👧":lang==="hi"?"लड़की 👧":"Baby Girl 👧")+'</option></select></div>':'')+(current===1?'<button class="swap-names" type="button" onclick="swapCoupleNames()">⇄ '+(lang==="mr"?"नावांचा क्रम बदला":lang==="hi"?"नामों का क्रम बदलें":"SWAP NAME ORDER")+'</button>':'')+'<button class="go" onclick="startQuiz()">'+t().go+'</button><p class="quiz-start-note">'+t().disclaimer+'</p>';
  }
  $("nameA").focus();
 }
 function startQuiz(){
  const a=$("nameA").value.trim(),b=$("nameB")?.value.trim()||"";
  if(!a||(current!==4&&!b)){toast(t().empty);return}
- window.gameNames={a,b,gender:current===3?($("babyGender")?.value||"boy"):null};
+ if(current===3)lastBabyGender=$("babyGender")?.value||"boy";window.gameNames={a,b,gender:current===3?lastBabyGender:null};
  sessionSeed=crypto.getRandomValues(new Uint32Array(1))[0]>>>0;
  const line=lang==="mr"?"तुमच्यासाठी एक खास निकाल तयार होतोय…":lang==="hi"?"आपका खास रिज़ल्ट तैयार हो रहा है…":"Creating your one-of-a-kind result…";
  $("modalTitle").textContent=lang==="mr"?"मॅजिक सुरू!":lang==="hi"?"मैजिक शुरू!":"Here comes the magic!";
